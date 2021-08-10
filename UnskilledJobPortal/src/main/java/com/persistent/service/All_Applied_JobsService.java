@@ -3,8 +3,8 @@ package com.persistent.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.persistent.entity.All_Applied_Jobs;
 import com.persistent.dao.IApliedJobsDAO;
+import com.persistent.entity.All_Applied_Jobs;
 
 @Service
 public class All_Applied_JobsService {

@@ -194,36 +194,29 @@
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
-                                            <tr>
-                                                <th>Category Name</th>
-                                                <th>Work Info.</th>
-                                                <th>Address </th>
-                                                <th>Apply date</th>
-                                                <th>Operation</th>
+                                             <tr>
                                                 
-
-                                                
-                                            </tr>
+                                                <th>Category</th>
+                                                <th>work description</th>
+                                                <th>satet</th>
+                                                <th>date of ost1</th>
+                                                <th>State</th>
+                                                </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
+                                           
+                                           <tr th:each="list:${jobList}">
+                                                <td th:text="${list.getCategory_id()}">hello</td>
+                                                <td th:text="${list.getWork_description()}"></td>
+                                                <td th:text="${list.getWork_state()}"></td>
+                                                <td th:text="${list.getDate_of_post()}"></td>
+                                                <td th:text="${list.is_active()}"></td>
                                                 <td><div style="margin-right: 25px;">
                                                     <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
-                                           <tr>
+                                           </tr> 
+
                                                 
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
+                                           
                                             
                                         </tbody>
                                     </table>
