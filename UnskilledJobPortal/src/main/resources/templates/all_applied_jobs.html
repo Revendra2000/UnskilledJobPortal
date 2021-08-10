@@ -199,15 +199,15 @@
                                                 
                                                 <th>Category</th>
                                                 <th>work description</th>
-                                                <th>satet</th>
-                                                <th>date of ost1</th>
+                                                <th>state</th>
+                                                <th>date of post</th>
                                                 <th>State</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
                                            
                                            <tr th:each="list:${jobList}">
-                                                <td th:text="${list.getCategory_id()}">hello</td>
+                                                <td th:text="${list.getCategory_id()}"></td>
                                                 <td th:text="${list.getWork_description()}"></td>
                                                 <td th:text="${list.getWork_state()}"></td>
                                                 <td th:text="${list.getDate_of_post()}"></td>
@@ -216,40 +216,6 @@
                                                     <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
                                            </tr> 
 
-                                                
-                                           
-
-                                            <tr>
-                                                <th>Category Name</th>
-                                                <th>Work Info.</th>
-                                                <th>Address </th>
-                                                <th>Apply date</th>
-                                                <th>Operation</th>
-                                                
-
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
-                                           <tr>
-                                                
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
->>>>>>> refs/heads/front-end
                                             
                                         </tbody>
                                     </table>

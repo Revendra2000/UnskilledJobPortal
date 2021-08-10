@@ -50,10 +50,10 @@ public class LoginController {
 		return "job_post";
 	}
 	
-	@GetMapping("/Apply_job")
+	@GetMapping("/apply_job")
 	public String applyJob()
 	{
-		return "Apply_job";
+		return "apply_job";
 	}
 	
 }
