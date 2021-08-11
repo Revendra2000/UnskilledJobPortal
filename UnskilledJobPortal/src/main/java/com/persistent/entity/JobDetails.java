@@ -11,8 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Job")
-public class Job {
+@Table(name="JOB_DETAILS")
+public class JobDetails {
 
 	@Id
 	@Column(name="JOB_ID" , columnDefinition = "NUMBER")
@@ -57,11 +57,11 @@ public class Job {
 	@Column(name = "JOB_ASSIGNED_TO" , columnDefinition = "VARCHAR2 (12)")
 	private String jobAssignedTo;
 
-	public Job() {
+	public JobDetails() {
 		super();
 	}
 
-	public Job(int jobId, String aadharNo, int categoryId, String workState, String workCity, String workPincode,
+	public JobDetails(int jobId, String aadharNo, int categoryId, String workState, String workCity, String workPincode,
 			String workArea, String workDescription, boolean isActive, int estimatedCost, Date dateOfPost,
 			Date lastDate, String jobType, String jobAssignedTo) {
 		super();
@@ -195,7 +195,7 @@ public class Job {
 
 	@Override
 	public String toString() {
-		return "Job [jobId=" + jobId + ", aadharNo=" + aadharNo + ", categoryId=" + categoryId + ", workState="
+		return "JobDetails [jobId=" + jobId + ", aadharNo=" + aadharNo + ", categoryId=" + categoryId + ", workState="
 				+ workState + ", workCity=" + workCity + ", workPincode=" + workPincode + ", workArea=" + workArea
 				+ ", workDescription=" + workDescription + ", isActive=" + isActive + ", estimatedCost=" + estimatedCost
 				+ ", dateOfPost=" + dateOfPost + ", lastDate=" + lastDate + ", jobType=" + jobType + ", jobAssignedTo="
