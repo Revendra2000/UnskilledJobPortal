@@ -15,47 +15,46 @@ import javax.persistence.Table;
 public class Job {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "JOB_ID_SEQ")	
+	@Column(name="JOB_ID" , columnDefinition = "NUMBER")
 	private int jobId;
 	
-	@Column(name = "aadhar_no" , length=12)
+	@Column(name = "AADHAR_NO" , columnDefinition = "VARCHAR2 (12)")
 	private String aadharNo;
 	
-	@Column(name = "category_id" , length=10)
+	@Column(name = "CATEGORY_ID" , columnDefinition = "NUMBER")
 	private int categoryId;
 	
-	@Column(name = "work_state" , length=30)
+	@Column(name = "WORK_STATE" , columnDefinition = "VARCHAR2 (30)")
 	private String  workState;
 	
-	@Column(name = "work_city" , length=30)
+	@Column(name = "WORK_CITY" , columnDefinition = "VARCHAR2 (30)")
 	private String workCity;
 	
-	@Column(name = "work_pincode" , length=30)
+	@Column(name = "WORK_PINCODE" , columnDefinition = "VARCHAR2 (6)")
 	private String workPincode;
 	
-	@Column(name = "work_area" , length=50)
+	@Column(name = "WORK_AREA" , columnDefinition = "VARCHAR2 (50)")
 	private String workArea;
 	
-	@Column(name = "work_description" , length=100)
+	@Column(name = "WORK_DESCRIPTION" , columnDefinition = "VARCHAR2 (100)")
 	private String workDescription;
 	
-	@Column(name = "is_active" , length=1)
+	@Column(name="IS_ACTIVE" , columnDefinition = "VARCHAR2(1)  DEFAULT 'T'")
 	private boolean isActive;
 	
-	@Column(name = "estimated_cost" , length=7)
+	@Column(name = "ESTIMATED_COST" , columnDefinition = "NUMBER (7)")
 	private int estimatedCost;
 	
-	@Column(name = "date_of_post" )
+	@Column(name="DATE_OF_POST" , columnDefinition = "DATE DEFAULT SYSDATE" )
 	private Date dateOfPost;
 	
-	@Column(name = "last_date")
+	@Column(name = "LAST_DATE" , columnDefinition = "DATE ")
 	private Date lastDate;
 	
-	@Column(name = "job_type" , length=30)
+	@Column(name = "JOB_TYPE" , columnDefinition = "VARCHAR2 (10)")
 	private String jobType;
 	
-	@Column(name = "job_assigned_to" , length=12)
+	@Column(name = "JOB_ASSIGNED_TO" , columnDefinition = "VARCHAR2 (12)")
 	private String jobAssignedTo;
 
 	public Job() {

@@ -11,43 +11,42 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Users")
-public class User {
+public class Users {
 	
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "USER_ID_SEQ")
+	@Column(name = "USER_ID" , columnDefinition = "NUMBER", nullable = false)
     private int userId;
 	
 	@Id
-	@Column(name = "aadhar_no" , length=12)
+	@Column(name = "AADHAR_NO" , columnDefinition = "VARCHAR2 (12)")
 	private String aadhar;	
 	
-	@Column(name="first_name" , length=30)
+	@Column(name="FIRST_NAME" , columnDefinition = "VARCHAR2 (30)")
 	private String firstName;
 	
-	@Column(name="last_name" , length=30)
+	@Column(name="LAST_NAME" , columnDefinition = "VARCHAR2 (30)")
 	private String lastName;
 	
-	@Column(name="gender" , length=1)
+	@Column(name="GENDER" , columnDefinition = "VARCHAR2 (1) CHECK (GENDER IN ('F','M'))")
 	private String gender;
 	
-	@Column(name="password" , length=30)
+	@Column(name="PASSWORD" , columnDefinition = "VARCHAR2 (50)" , nullable = false)
 	private String password;
 	
-	@Column(name="contact" , length=10)
+	@Column(name="CONTACT" , columnDefinition = "VARCHAR2 (10)" , nullable = false)
 	private String contact;
 	
-	@Column(name="address" , length=50)
+	@Column(name="ADDRESS" , columnDefinition = "VARCHAR2 (50)")
 	private String address;
 	
-	@Column(name="role" , length=10)
-	private String role;
+	@Column(name="ROLES" , columnDefinition = "VARCHAR2(15)  DEFAULT 'ROLE_USER'")
+	private String roles;
 
-	public User() {
+	public Users() {
 		super();
 	}
 
-	public User(int userId, int id, String aadhar, String firstName, String lastName, String gender, String password,
-			String contact, String address, String role) {
+	public Users(int userId, int id, String aadhar, String firstName, String lastName, String gender, String password,
+			String contact, String address, String roles) {
 		super();
 		this.userId = userId;
 		this.aadhar = aadhar;
@@ -57,7 +56,7 @@ public class User {
 		this.password = password;
 		this.contact = contact;
 		this.address = address;
-		this.role = role;
+		this.roles = roles;
 	}
 
 	public int getUserId() {
@@ -125,19 +124,19 @@ public class User {
 		this.address = address;
 	}
 
-	public String getRole() {
-		return role;
+	public String getRoles() {
+		return roles;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", aadhar=" + aadhar + ", firstName=" + firstName
+		return "Users [userId=" + userId + ", aadhar=" + aadhar + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", gender=" + gender + ", password=" + password + ", contact=" + contact
-				+ ", address=" + address + ", role=" + role + "]";
+				+ ", address=" + address + ", roles=" + roles + "]";
 	}
 	
 	
