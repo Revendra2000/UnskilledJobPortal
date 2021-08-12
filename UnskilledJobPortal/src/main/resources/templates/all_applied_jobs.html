@@ -198,23 +198,28 @@
                                              <tr>
                                                 
                                                 <th>Category</th>
-                                                <th>work description</th>
-                                                <th>state</th>
-                                                <th>date of post</th>
-                                                <th>State</th>
+                                                <th>Work Location</th>
+                                                <th>Job Owner</th>
+                                                <th>Date of post</th>
+                                                <th>Status</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
                                            
                                            <tr th:each="list:${jobList}">
-                                                <td th:text="${list.getCategory_id()}"></td>
-                                                <td th:text="${list.getWork_description()}"></td>
-                                                <td th:text="${list.getWork_state()}"></td>
-                                                <td th:text="${list.getDate_of_post()}"></td>
-                                                <td th:text="${list.is_active()}"></td>
+                                                <td th:text="${list.getCategory()}"></td>
+                                                <td th:text="${list.getLocation()}"></td>
+                                                <td th:text="${list.getOwner()}"></td>
+                                                <td th:text="${list.getDateOfPost()}"></td>
+                                                <td th:text="${list.getStatus()}"></td>
+                                                <!-- 
+                                                
                                                 <td><div style="margin-right: 25px;">
                                                     <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                           </tr> 
+                                          
+                                                 -->
+                                                
+                                                 </tr> 
 
                                             
                                         </tbody>

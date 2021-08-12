@@ -1,73 +1,95 @@
 package com.persistent.entity;
-
+	
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "Users")
 public class Users {
-
-	private int user_id;
+	
+	@Column(name = "USER_ID" , columnDefinition = "NUMBER", nullable = false)
+    private int userId;
 	
 	@Id
-	private String aadhar_no;
-	private String first_name;
-	private String last_name;
-	private String gender;
-	private String password;
-	private String mobile_no;
-	private String user_type;
-	private String address;
-	private String skills;
+	@Column(name = "AADHAR_NO" , columnDefinition = "VARCHAR2 (12)")
+	private String aadhar;	
 	
+	@Column(name="FIRST_NAME" , columnDefinition = "VARCHAR2 (30)")
+	private String firstName;
+	
+	@Column(name="LAST_NAME" , columnDefinition = "VARCHAR2 (30)")
+	private String lastName;
+	
+	@Column(name="GENDER" , columnDefinition = "VARCHAR2 (1) CHECK (GENDER IN ('F','M'))")
+	private String gender;
+	
+	@Column(name="PASSWORD" , columnDefinition = "VARCHAR2 (50)" , nullable = false)
+	private String password;
+	
+	@Column(name="CONTACT" , columnDefinition = "VARCHAR2 (10)" , nullable = false)
+	private String contact;
+	
+	@Column(name="ADDRESS" , columnDefinition = "VARCHAR2 (50)")
+	private String address;
+	
+	@Column(name="ROLES" , columnDefinition = "VARCHAR2(15)  DEFAULT 'ROLE_USER'")
+	private String roles;
+
 	public Users() {
 		super();
 	}
 
-	public Users(int user_id, String aadhar_no, String first_name, String last_name, String gender, String password,
-			String mobile_no, String user_type, String address, String skills) {
+	public Users(int userId, int id, String aadhar, String firstName, String lastName, String gender, String password,
+			String contact, String address, String roles) {
 		super();
-		this.user_id = user_id;
-		this.aadhar_no = aadhar_no;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.userId = userId;
+		this.aadhar = aadhar;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.gender = gender;
 		this.password = password;
-		this.mobile_no = mobile_no;
-		this.user_type = user_type;
+		this.contact = contact;
 		this.address = address;
-		this.skills = skills;
+		this.roles = roles;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public String getAadhar_no() {
-		return aadhar_no;
+
+	public String getAadhar() {
+		return aadhar;
 	}
 
-	public void setAadhar_no(String aadhar_no) {
-		this.aadhar_no = aadhar_no;
+	public void setAadhar(String aadhar) {
+		this.aadhar = aadhar;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getGender() {
@@ -86,20 +108,12 @@ public class Users {
 		this.password = password;
 	}
 
-	public String getMobile_no() {
-		return mobile_no;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setMobile_no(String mobile_no) {
-		this.mobile_no = mobile_no;
-	}
-
-	public String getUser_type() {
-		return user_type;
-	}
-
-	public void setUser_type(String user_type) {
-		this.user_type = user_type;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public String getAddress() {
@@ -110,21 +124,20 @@ public class Users {
 		this.address = address;
 	}
 
-	public String getSkills() {
-		return skills;
+	public String getRoles() {
+		return roles;
 	}
 
-	public void setSkills(String skills) {
-		this.skills = skills;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	@Override
 	public String toString() {
-		return "Users [user_id=" + user_id + ", aadhar_no=" + aadhar_no + ", first_name=" + first_name + ", last_name="
-				+ last_name + ", gender=" + gender + ", password=" + password + ", mobile_no=" + mobile_no
-				+ ", user_type=" + user_type + ", address=" + address + ", skills=" + skills + "]";
+		return "Users [userId=" + userId + ", aadhar=" + aadhar + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", gender=" + gender + ", password=" + password + ", contact=" + contact
+				+ ", address=" + address + ", roles=" + roles + "]";
 	}
-	
 	
 	
 }

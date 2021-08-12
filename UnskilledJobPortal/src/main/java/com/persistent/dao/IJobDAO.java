@@ -6,13 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.persistent.entity.Job;
+import com.persistent.entity.JobDetails;
 
-public interface IJobDAO extends CrudRepository<Job,String> {
+public interface IJobDAO extends CrudRepository<JobDetails,Integer> {
 
-	Job findByJobId(int id);
+	JobDetails findByJobId(int id);
 	
-	@Query("select a.job_id from All_Applied_Jobs a where  a.aadhar_worker= :aadhar")
-	Set<Integer> jobsAppliedByWorkerById(@Param("aadhar") String aadhar);
 	
+
 }

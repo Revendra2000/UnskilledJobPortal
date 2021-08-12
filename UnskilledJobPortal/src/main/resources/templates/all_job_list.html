@@ -12,27 +12,27 @@
     <!-- Title Page-->
     <title>All Jobs</title>
 
-    <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+   <!-- Fontfaces CSS-->
+    <link th:href="@{css/font-face.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/font-awesome-4.7/css/font-awesome.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/font-awesome-5/css/fontawesome-all.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/mdi-font/css/material-design-iconic-font.min.css}" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link th:href="@{vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet" media="all">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link th:href="@{vendor/animsition/animsition.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/wow/animate.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/slick/slick.css}" rel="stylesheet" media="all">
+    <link th:href="@{vendor/select2/select2.min.css}" rel="stylesheet" media="all">
+    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
-
+    <link th:href="@{css/theme.css}" rel="stylesheet" media="all">
+  
 </head>
 
 <body class="animsition">
@@ -42,7 +42,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" th:href="index.html">
 							<span class="title"><h3 style="padding-left: 40px;color: #fff;">Job Portal</h3></span>
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -57,12 +57,12 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{dashboard}">
+                            <a class="js-arrow"  th:href="@{dashboard}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
                         <!-- <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{all_job_list}">
+                            <a class="js-arrow" th:href="" th:th:href="@{all_job_list}">
                                 <i class="fa fa-book" aria-hidden="true"></i>All Jobs</a>
                             
                         </li>-->
@@ -70,14 +70,6 @@
                             <a href="" th:href="@{all_applied_jobs}">
                                <i class="fa fa-bookmark" aria-hidden="true"></i>Applied Jobs</a>
                         </li>
-                        <!-- <li class="has-sub">
-                            <a href="" th:href="@{profile}">
-                               <i class="fa fa-user" aria-hidden="true"></i>Profile</a>
-                        </li>
-                        <li class="has-sub">
-                            <a href=""  >
-                               <i class="fa fa-sign-out" aria-hidden="true"></i></i>Sign Out</a>
-                        </li>-->
                        
                     </ul>
                 </div>
@@ -101,7 +93,7 @@
                             
                         </li>
                         <!-- <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{all_job_list}">
+                            <a class="js-arrow" th:href="" th:th:href="@{all_job_list}">
                                 <i class="fa fa-book" aria-hidden="true"></i>All Jobs</a>
                             
                         </li>-->
@@ -110,11 +102,11 @@
                                <i class="fa fa-bookmark" aria-hidden="true"></i>Applied Jobs</a>
                         </li>
                         <!-- <li class="has-sub">
-                            <a href="" th:href="@{profile}">
+                            <a th:href="" th:th:href="@{profile}">
                                <i class="fa fa-user" aria-hidden="true"></i>Profile</a>
                         </li>
                         <li class="has-sub">
-                            <a href="" >
+                            <a th:href="" >
                                <i class="fa fa-sign-out" aria-hidden="true"></i></i>Sign Out</a>
                         </li>-->
                         
@@ -146,31 +138,31 @@
                                             <img src="images/icon/user.png" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">user name</a>
+                                            <a class="js-acc-btn" th:href="#">user name</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="#">
+                                                    <a th:href="#">
                                                         <img src="images/icon/user.png" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">user name</a>
+                                                        <a th:href="#">user name</a>
                                                     </h5>
                                                     <span class="email">addar card no.</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="" th:href="@{profile}">
+                                                    <a th:href="" th:th:href="@{profile}">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                                
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a th:href="#">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -234,7 +226,7 @@
                                         <p class="card-text m-2">Some quick example text to build on the card title and make up the bulk of the card's
                                             content.(work descripation)
                                         </p>
-                                        <a th:href="@{Apply_job}" ><button type="submit" class="btn btn-primary btn-sm">
+                                        <a th:href="@{/applyJob/{id}(id=22)}" ><button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> More Info..
                                         </button></a>
                                     </div>
@@ -251,7 +243,7 @@
                                         <p class="card-text m-2">Some quick example text to build on the card title and make up the bulk of the card's
                                             content.(work descripation)
                                         </p>
-                                        <a th:href="@{Apply_job}" ><button type="submit" class="btn btn-primary btn-sm">
+                                        <a th:href="@{/applyJob/{id}(id=23)}" ><button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> More Info..
                                         </button></a>
                                     </div>
@@ -270,7 +262,7 @@
                                         <p class="card-text m-2">Some quick example text to build on the card title and make up the bulk of the card's
                                             content.(work descripation)
                                         </p>
-                                       <a th:href="@{Apply_job}" ><button type="submit" class="btn btn-primary btn-sm">
+                                       <a th:href="@{/applyJob/{id}(id=21)}" ><button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> More Info..
                                         </button></a>
                                     </div>
@@ -289,7 +281,7 @@
                                         <p class="card-text m-2">Some quick example text to build on the card title and make up the bulk of the card's
                                             content.(work descripation)
                                         </p>
-                                       <a th:href="@{Apply_job}" ><button type="submit" class="btn btn-primary btn-sm">
+                                       <a th:href="@{/applyJob/{id}(id=22)}" ><button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> More Info..
                                         </button></a>
                                     </div>
