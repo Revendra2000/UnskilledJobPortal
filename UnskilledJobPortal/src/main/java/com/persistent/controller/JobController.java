@@ -13,8 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.persistent.entity.AllPostedJobDetails;
+import com.persistent.entity.AppliedUserDetails;
 import com.persistent.entity.JobDetails;
 import com.persistent.entity.PostJobForm;
 import com.persistent.service.CategoryService;
@@ -148,5 +150,32 @@ public class JobController {
 		m.addAttribute("allPostedJobList",allPostedJobs);
 		
 		return "posted_job_list";	
+	}
+	
+	@GetMapping("/job_applied_list")
+	public String job_applied_list(@RequestParam int jobId,Model m) {
+		System.out.println("-------------------------- job applied list "+jobId+"-----------------------------------");
+		
+		List<AppliedUserDetails> userDetails=jobService.getDetailsOfAllAppliers(jobId);
+		
+		
+		if(userDetails.isEmpty())
+			m.addAttribute("isEmpty","true");
+		else 
+		{
+			System.out.println("Job Id "+jobId+" Assigned to "+jobService.getSelectedWorkerAadharNo(jobId));
+			String assignedTo=jobService.getSelectedWorkerAadharNo(jobId);
+			if(assignedTo==null)
+				m.addAttribute("isAssigned", "false");
+			else {
+				m.addAttribute("isAssigned","true");
+			}
+			m.addAttribute("assignedTo",assignedTo);
+				
+			
+			m.addAttribute("userDetails",userDetails);
+			m.addAttribute("isEmpty","false");
+		}
+		return "job_applied_list";
 	}
 }

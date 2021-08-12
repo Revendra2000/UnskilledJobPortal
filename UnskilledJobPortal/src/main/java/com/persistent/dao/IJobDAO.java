@@ -27,4 +27,15 @@ public interface IJobDAO extends CrudRepository<JobDetails, Integer> {
 	
 	@Query(value="SELECT * FROM Job_Details WHERE Aadhar_No = ?1 ORDER BY JOB_ID DESC", nativeQuery = true)
 	  List<JobDetails> findAllById(String aadharNo);
+	
+	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE job_details set job_assigned_to =?1,is_active='F' where job_id = ?2", nativeQuery = true)
+		int setJobAssignedToOfJobId(String aadharNo,int jobId);
+	
+	
+	@Query(value="SELECT job_assigned_to FROM Job_Details WHERE job_id = ?1", nativeQuery = true)
+	  String findSelectedWorkerAadharNo(int jobId);
+	
 }

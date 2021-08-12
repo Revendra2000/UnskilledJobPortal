@@ -169,6 +169,8 @@
                                                 <td th:text = "${job.getStatus()}"></td>
                                                 <td th:text = "${job.getLastDate()}"></td>
                                               <!--   <td class="denied">Processed</td> -->
+                                              
+                                              <!-- This button will redirect to page where the list of all applier is show it will take jobId as PathVaribale-->
                                                 <td><a th:href="@{/job_applied_list(jobId=${job.getJobId()})}"><button type="submit" class="btn btn-primary btn-sm">
             		                                <i class="fa fa-eye" aria-hidden="true"></i> All Applicants
 			                                        </button></a></td>

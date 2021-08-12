@@ -147,94 +147,42 @@
 						<div class="row m-t-30">
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
+                                <div class="table-responsive m-b-40"  >
+                                <!-- If no one has applied this message will be printed -->
+                                 <h3 class="text-danger" th:if="${isEmpty}">Till now no one has applied, please wait for any applier</h3>
+                                     <!-- If no one has applied the table will not be displayed -->
+                                    <table class="table table-borderless table-data3" th:if="${!isEmpty}">
                                         <thead>
                                             <tr>
-                                                <th>Aadar No.</th>
-                                                <th>Name</th>
+                                            	<th>Job ID</th>
+                                                <th>Full Name</th>
+                                                <th>Gender</th>
+                                                <th>Aadhar No.</th>
                                                 <th>Address</th>
                                                 <th>Mobile No.</th>
-                                                <th>Skills</th>
-                                                <th>Date</th>
-                                                
-
-                                                
+                                                <th>Select Candidate</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <!-- Population the table from user details model attribute -->
+                                        <h3 class="text-danger" th:if="${isEmpty}">Till now no one has applied, please wait for any applier</h3>
+                                            <tr th:each = "user : ${userDetails} ">
+                                               	<td th:text = "${user.getJobId()}"></td>
+                                                <td th:text = "${user.getFullName()}"></td>
+                                                <td th:text = "${user.getGender()}"></td>
+                                                <td th:text = "${user.getAadharNo()}"></td>
+                                                <td th:text = "${user.getAddress()}"></td>
+                                                <td th:text = "${user.getMobileNo()}"></td>
+                                                 <!-- If the job is assigned to someone than select candidate button will be disabled -->
+                                                <td th:if="${!isAssigned}" ><a th:href="@{/select_candidate(jobId=${user.getJobId()},aadharNo=${user.getAadharNo()})}"><button type="submit" class="btn btn-primary btn-sm">
+            		                                <i class="fa fa-eye" aria-hidden="true"></i> Select Candidate
+			                                        </button></a></td>
+			                                   <!-- This will show status assigned to person whose addharNo matches the assignedTo aadharNo -->
+			                                   <div th:if="${isAssigned}">
+			                                  <td th:if=" ${user.getAadharNo()}  ==  ${assignedTo} " >Selected</td>
+    										<td th:unless=" ${user.getAadharNo()} == ${assignedTo} ">Not Selected</td>
+    										</div>
                                             <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td>2345 4567 6789</td>
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>9225784866</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

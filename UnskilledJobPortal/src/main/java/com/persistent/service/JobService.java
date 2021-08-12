@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.persistent.dao.IJobDAO;
 import com.persistent.entity.AllPostedJobDetails;
+import com.persistent.entity.AppliedUserDetails;
 import com.persistent.entity.JobDetails;
 import com.persistent.entity.PostJobForm;
 
@@ -119,6 +120,26 @@ public class JobService {
 		}
 		System.out.println(allPostedJobDetails);
 		return allPostedJobDetails;
+	}
+	
+	
+
+	public List<AppliedUserDetails> getDetailsOfAllAppliers(int jobID)
+	{
+		List<String> usersAadharNoList=allAppliedJobService.getAllWhoApplied(jobID);
+		System.out.println("-------JobId "+jobID +" User AadharList "+usersAadharNoList);
+		return allAppliedJobService.getDetailsOfAppliedUser(usersAadharNoList, String.valueOf(jobID));
+		
+	}
+	
+	public int  assignJobToAadharNo(int jobId,String aadharNo)
+	{
+		return dao.setJobAssignedToOfJobId(aadharNo, jobId);
+	}
+	
+	public String getSelectedWorkerAadharNo(int jobId)
+	{
+		return dao.findSelectedWorkerAadharNo(jobId);
 	}
 	
 }
