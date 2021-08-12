@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.persistent.entity.JobDetails;
 
+
+
 public interface IJobDAO extends CrudRepository<JobDetails, Integer> {
 	
 //	@Modifying
