@@ -138,7 +138,7 @@ public class JobController {
 	@GetMapping("/posted_job_list")
 	public String show_posted_job_list(Model m) {
 		System.out.println("in all posted job details controller");
-		List<JobDetails> jobDetailsList =jobService.getAllPostedJobs("123456789123");
+		List<JobDetails> jobDetailsList =jobService.getAllPostedJobs("111122223333");
 		List<AllPostedJobDetails> allPostedJobs=jobService.processAllPostedJobs(jobDetailsList);
 		
 		System.out.println("allPostedJobs");
