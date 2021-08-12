@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.persistent.dao.IAdminDAO;
 
-@Service
+
+@Service("adminService")
 public class AdminService {
 
 	@Autowired

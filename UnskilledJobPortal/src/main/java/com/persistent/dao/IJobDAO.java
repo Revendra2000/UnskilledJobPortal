@@ -1,6 +1,7 @@
 package com.persistent.dao;
 
 import java.util.Set;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,4 +15,8 @@ public interface IJobDAO extends CrudRepository<JobDetails,Integer> {
 	
 	
 
+	@Query(value="SELECT * FROM JOB_DETAILS WHERE is_active='T'",nativeQuery=true)
+	public List<JobDetails> getAllJobs();
+	
+	
 }

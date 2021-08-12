@@ -7,7 +7,7 @@ import com.persistent.dao.IAllAppliedJobDAO;
 import com.persistent.dao.IUsersDAO;
 import com.persistent.entity.AllAppliedJob;
 
-@Service
+@Service("allApplliedJobService")
 public class AllAppliedJobService {
 
 	@Autowired

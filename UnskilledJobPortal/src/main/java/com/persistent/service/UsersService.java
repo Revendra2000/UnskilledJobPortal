@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import com.persistent.dao.IUsersDAO;
 import com.persistent.entity.Users;
 
-@Service
+
+@Service("usersService")
 public class UsersService {
 
 	@Autowired

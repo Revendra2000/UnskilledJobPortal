@@ -11,7 +11,7 @@ import com.persistent.dao.IAllAppliedJobDAO;
 import com.persistent.dao.IJobDAO;
 import com.persistent.entity.JobDetails;
 
-@Service
+@Service("jobService")
 public class JobService {
 	
 	@Autowired
@@ -63,5 +63,8 @@ public class JobService {
 			return "rejected";
 	}
 
-	
+//from home page branch
+	public List<JobDetails> getAllJobs() {
+		return dao.getAllJobs();
+	}
 }

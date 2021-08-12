@@ -206,9 +206,22 @@
                                         <div class="card-body">
                                         <div class="mx-auto d-block" >
                                             
+
+											<div class="location text-sm-center">Work Description:<td th:text="${desc}"></td></div>
+                                            <div class="location text-sm-center">Work State: <td th:text="${state}"></td></div>
+                                            <div class="location text-sm-center">Work City: <td th:text="${city}"></td></div>
+                                            <div class="location text-sm-center">Work Pincode: <td th:text="${pin}"></td></div>
+                                            <div class="location text-sm-center">Work Area: <td th:text="${area}"></td></div>
+                                            <div class="location text-sm-center">Estimated Cost: Rs.<td th:text="${cost}"></td></div>
+                                            <div class="location text-sm-center">Type of work: <td th:text="${type}"></td></div>
+                                            <div class="location text-sm-center">Last date to apply: <td th:text="${date}"></td></div>
+                                          
                                            
                                             
-                                             <h5 class="text-sm-center mt-2 mb-1" th:text="${jobs.getJobId()}"></h5>
+                                             
+											
+											<!-- 
+											 <h5 class="text-sm-center mt-2 mb-1" th:text="${jobs.getJobId()}"></h5>
                                             <h5 class="text-sm-center mt-2 mb-1" th:text="${jobs.getCategoryId()}"></h5>
                                             <div class="location text-sm-center" th:text="${jobs.getWorkDescription()}"></div>
                                             <div class="location text-sm-center" th:text="${jobs.getWorkState()}">}</div>
@@ -218,9 +231,18 @@
                                             <div class="location text-sm-center" th:text="${jobs.getEstimatedCost()}"></div>
                                             <div class="location text-sm-center" th:text="${jobs.getJobType()}"></div>
                                             <div class="location text-sm-center" th:text="${jobs.getLastDate()}"></div>
+											
+											<div class="card-text text-sm-center">
+                                            <a th:href="@{/jobApplied/{id}(id=${jobs.getJobId()})}" ><button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Apply
+                                        </button></a>                                          
+                                        
+                                    </div>
+											 -->
+											
 
                                             <div class="card-text text-sm-center">
-                                            <a th:href="@{/jobApplied/{id}(id=${jobs.getJobId()})}" ><button type="submit" class="btn btn-primary btn-sm">
+                                            <a th:href="@{/jobApplied/{id}(${id})}" ><button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Apply
                                         </button></a>
                                             

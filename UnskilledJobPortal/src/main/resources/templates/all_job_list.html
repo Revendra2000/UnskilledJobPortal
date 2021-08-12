@@ -217,6 +217,54 @@
 
                         <div class="row">
 
+			<tbody>
+							<tr th:each="c:${allJobs}">
+                            <div class="col-md-4">
+                                <div class="card border border-primary">
+                                    <div class="card-header">
+                                        <strong class="card-title">Job For: <td th:text="${c.workDescription}"></td></strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text m-2">
+           
+                                       Work City: <td th:text="${c.workCity}"></td> <br>
+                                       Work Area: <td th:text="${c.workArea}"></td> <br>
+                                       Work State: <td th:text="${c.workState}"></td> <br>
+                                        </p>
+                                        <a th:href="@{/applyJob/${c.jobId}}" ><button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> More Info..
+                                        </button></a>
+                                        
+                                        
+                                      
+                 <!-- 
+                 
+                  <form th:action = "@{/Apply_job(desc=${c.workDescription},state=${c.workState},
+                  city=${c.workCity},pin=${c.workPincode},area=${c.workArea},cost=${c.estimatedCost},
+                  type=${c.jobType},date=${c.lastDate}),id=${c.jobId})}" method = "POST">
+                 <button type="submit" class="btn btn-primary btn-sm">
+                 <i class="fa fa-dot-circle-o"></i> More Info..
+                 </button>
+     
+            	</form>
+                 
+                  -->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+			</tr>
+						</tbody>
+
+
+
+
+
+
+
+
+
+
                             <div class="col-md-4">
                                 <div class="card border border-primary">
                                     <div class="card-header">
