@@ -206,15 +206,15 @@
                                         <div class="card-body">
                                         <div class="mx-auto d-block">
                                             
-                                            <h5 class="text-sm-center mt-2 mb-1">Category Name</h5>
-                                            <div class="location text-sm-center">work description</div>
-                                            <div class="location text-sm-center">work state</div>
-                                            <div class="location text-sm-center">work city</div>
-                                            <div class="location text-sm-center">work pincode</div>
-                                            <div class="location text-sm-center">work area</div>
-                                            <div class="location text-sm-center">estimated cost</div>
-                                            <div class="location text-sm-center">Job type</div>
-                                            <div class="location text-sm-center">last date</div>
+                                            <div class="location text-sm-center">Work Description:<td th:text="${desc}"></td></div>
+                                            <div class="location text-sm-center">Work State: <td th:text="${state}"></td></div>
+                                            <div class="location text-sm-center">Work City: <td th:text="${city}"></td></div>
+                                            <div class="location text-sm-center">Work Pincode: <td th:text="${pin}"></td></div>
+                                            <div class="location text-sm-center">Work Area: <td th:text="${area}"></td></div>
+                                            <div class="location text-sm-center">Estimated Cost: Rs.<td th:text="${cost}"></td></div>
+                                            <div class="location text-sm-center">Type of work: <td th:text="${type}"></td></div>
+                                            <div class="location text-sm-center">Last date to apply: <td th:text="${date}"></td></div>
+                                          
 
                                             <div class="card-text text-sm-center">
                                             <button type="submit" class="btn btn-primary btn-sm">

@@ -1,12 +1,21 @@
 package com.persistent.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.persistent.dao.IJobDAO;
 
 @Controller
 public class TestControllerForFrontEnd {
+	
+	
+	@Autowired
+	private IJobDAO dao;
 	
 		@RequestMapping(value="/about_us",method=RequestMethod.GET)
 		public String home() {
@@ -29,7 +38,8 @@ public class TestControllerForFrontEnd {
 		}
 		
 		@RequestMapping(value={"/dashboard","/"},method=RequestMethod.GET)
-		public String dashboard() {
+		public String dashboard(Model m) {
+			m.addAttribute("allJobs",dao.getAllJobs());
 			return "dashboard";
 		}
 		
@@ -63,9 +73,24 @@ public class TestControllerForFrontEnd {
 			return "all_job_list";
 		}
 		
-		@RequestMapping(value="/Apply_job",method=RequestMethod.GET)
-		public String Apply_job() {
-			return "apply_job";
+		@RequestMapping(value="/Apply_job",method=RequestMethod.POST)
+		public String Apply_job(@RequestParam(name="desc", required=false) String desc,
+				@RequestParam(name="state", required=false) String state,
+				@RequestParam(name="city", required=false) String city,
+				@RequestParam(name="pin", required=false) String pin,
+				@RequestParam(name="area", required=false) String area,
+				@RequestParam(name="cost", required=false) String cost,
+				@RequestParam(name="type", required=false) String type,
+				@RequestParam(name="date", required=false) String date, Model m) {
+			m.addAttribute("desc", desc);
+			m.addAttribute("state", state);
+			m.addAttribute("city", city);
+			m.addAttribute("pin", pin);
+			m.addAttribute("area", area);
+			m.addAttribute("cost", cost);
+			m.addAttribute("type", type);
+			m.addAttribute("date", date);
+			return "Apply_job";
 		}
 		
 		@RequestMapping(value="/admin_add_category",method=RequestMethod.GET)
