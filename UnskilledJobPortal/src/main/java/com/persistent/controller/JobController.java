@@ -178,4 +178,16 @@ public class JobController {
 		}
 		return "job_applied_list";
 	}
+	
+	//select_candidate?jobId=1&aadharNo=111122223333
+	
+	@GetMapping("/select_candidate")
+	public String select_candidate(@RequestParam int jobId,@RequestParam String aadharNo,Model m) {
+		System.out.println("-------------------------- select candidate "+jobId+" aadharNo "+aadharNo+"-----------------------------------");
+		
+		
+			
+		int result=jobService.assignJobToAadharNo(jobId, aadharNo);
+		return "redirect:/job_applied_list?jobId="+jobId ;
+	}
 }
