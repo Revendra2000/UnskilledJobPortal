@@ -82,5 +82,9 @@ public class CategoryService {
 		
 		return jobTypeList;
 	}
+	public String getCategoryNameById(int categoryId)
+	{
+		return dao.findById(categoryId).getCategoryName();
+	}
 	
 }

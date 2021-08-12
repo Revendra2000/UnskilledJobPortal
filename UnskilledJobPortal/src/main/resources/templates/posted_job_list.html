@@ -122,50 +122,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                           <!--  <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>-->
+
                             <div class="header-button">
                                  <h2 style="color: white">Posted Jobs</h2>
-                                <!-- <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/user.png" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">user name</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/user.png" alt="John Doe" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">user name</a>
-                                                    </h5>
-                                                    <span class="email">addar card no.</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="" th:href="@{profile}">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -182,55 +141,39 @@
                     <div class="container-fluid">
 						<div class="row m-t-30">
                             <div class="col-md-12">
+                            
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
+                                             	<th>Job Id</th>
                                                 <th>Post Date</th>
                                                 <th>Category Name</th>
-                                                <th>Job Type</th>
-                                                <th>Work Address</th>
+                                                <th>Work Area</th>
                                                 <th>Work Description</th>
                                                 <th>Status</th>
-                                                <th>Price</th>
                                                 <th>Last Date</th>
                                                 <th>Applied List</th>
-                                                <th>Opration</th>
-
-                                                
+                                                <!-- <th>Opration</th> -->  
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Painter</td>
-                                                <td>Mobile</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="denied">Processed</td>
-                                                <td>$999.00</td>
-                                                <td>2018-09-29 05:57</td>
-                                                <td><a th:href="@{job_applied_list}"><button type="submit" class="btn btn-primary btn-sm">
-            		                                <i class="fa fa-eye" aria-hidden="true"></i> show
+                                      <!--Showing the data from model object allPostedJobList  -->
+                                            <tr th:each = "job : ${allPostedJobList} ">
+                                                <td th:text = "${job.getJobId()}"></td>
+                                                <td th:text = "${job.getDateOfPost()}"></td>
+                                                <td th:text = "${job.getCategoryName()}"></td>
+                                                <td th:text = "${job.getWorkArea()}"></td>
+                                                <td th:text = "${job.getWorkDescription()}"></td>
+                                                <td th:text = "${job.getStatus()}"></td>
+                                                <td th:text = "${job.getLastDate()}"></td>
+                                              <!--   <td class="denied">Processed</td> -->
+                                                <td><a th:href="@{/job_applied_list(jobId=${job.getJobId()})}"><button type="submit" class="btn btn-primary btn-sm">
+            		                                <i class="fa fa-eye" aria-hidden="true"></i> All Applicants
 			                                        </button></a></td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div style="color: #2196f3;"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></div><div ><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>Painter</td>
-                                                <td>Mobile</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="denied">Processed</td>
-                                                <td>$999.00</td>
-                                                <td>2018-09-29 05:57</td>
-                                                <td><a th:href="@{job_applied_list}"><button type="submit" class="btn btn-primary btn-sm">
-                                            		<i class="fa fa-eye" aria-hidden="true"></i> show
-                                        			</button></a></td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div style="color: #2196f3;"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></div><div ><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
+                                                <!-- <td><div style="margin-right: 25px;">
+                                                    <div style="color: #2196f3;"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></div><div ><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td> -->
                                             </tr>
                                             
                                         </tbody>

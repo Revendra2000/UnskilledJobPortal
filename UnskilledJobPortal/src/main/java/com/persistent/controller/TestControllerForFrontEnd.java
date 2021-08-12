@@ -33,12 +33,6 @@ public class TestControllerForFrontEnd {
 			return "dashboard";
 		}
 		
-
-		
-		@RequestMapping(value="/posted_job_list",method=RequestMethod.GET)
-		public String posted_job_list() {
-			return "posted_job_list";
-		}
 		
 		@RequestMapping(value="/job_applied_list",method=RequestMethod.GET)
 		public String job_applied_list() {

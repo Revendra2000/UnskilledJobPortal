@@ -2,12 +2,15 @@ package com.persistent.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.persistent.dao.IJobDAO;
+import com.persistent.entity.AllPostedJobDetails;
 import com.persistent.entity.JobDetails;
 import com.persistent.entity.PostJobForm;
 
@@ -61,7 +64,7 @@ public class JobService {
 		 
 		jobDetails.setLastDate(sqlLastDate);
 		jobDetails.setAadharNo(aadharCard);
-		//jobDetails.setActive(true);
+		jobDetails.setActive(true);
 		jobDetails.setDateOfPost(sqlTodayDate);
 		jobDetails.setEstimatedCost(postJobForm.getEstimatedCost());
 		//jobDetails.setJobAssignedTo(); will be populated by other functionality[Apply Job]
@@ -71,8 +74,50 @@ public class JobService {
 	}
 	
 	
-	public void addJobDetails(JobDetails job) {
-		dao.save(job);
-}
+	public void addJobDetails(JobDetails job)
+	{
+		dao.insertJobDetails(job.getAadharNo(),job.getCategoryId(),job.getDateOfPost(),job.getEstimatedCost(),job.getJobType(),job.getLastDate(),job.getWorkArea(),job.getWorkCity(),job.getWorkDescription(),job.getWorkPincode(),job.getWorkPincode());
+	}
+	
+	
+	public List<JobDetails> getAllPostedJobs(String aadharNo)
+	{
+		List<JobDetails> jobDetailsList=dao.findAllById(aadharNo);
+		System.out.println(jobDetailsList);
+		return jobDetailsList;
+		
+	}
+	
+	public List<AllPostedJobDetails> processAllPostedJobs(List<JobDetails> jobDetailsList)
+	{
+		List<AllPostedJobDetails> allPostedJobDetails=new ArrayList<>();
+		
+		for(JobDetails job:jobDetailsList)
+		{
+			AllPostedJobDetails apjd=new AllPostedJobDetails();
+			
+			apjd.setJobId(String.valueOf(job.getJobId()));
+			apjd.setJobType(job.getJobType());
+			apjd.setWorkArea(job.getWorkArea());
+			apjd.setWorkDescription(job.getWorkDescription());
+			
+			if(job.isActive())
+				apjd.setStatus("Not Assigned");
+			else
+				apjd.setStatus("Assigned");
+			
+			
+			apjd.setDateOfPost(String.valueOf(job.getDateOfPost()));
+			apjd.setLastDate(String.valueOf(job.getLastDate()));
+			
+			apjd.setCategoryName(categoryService.getCategoryNameById(job.getCategoryId()));
+			
+			allPostedJobDetails.add(apjd);
+			
+			
+		}
+		System.out.println(allPostedJobDetails);
+		return allPostedJobDetails;
+	}
 	
 }

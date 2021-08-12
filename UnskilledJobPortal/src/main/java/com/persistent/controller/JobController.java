@@ -1,5 +1,7 @@
 package com.persistent.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.persistent.entity.AllPostedJobDetails;
 import com.persistent.entity.JobDetails;
 import com.persistent.entity.PostJobForm;
 import com.persistent.service.CategoryService;
@@ -132,5 +135,18 @@ public class JobController {
 		return "redirect:/posted_job_list";
 	}
 	
-	
+	@GetMapping("/posted_job_list")
+	public String show_posted_job_list(Model m) {
+		System.out.println("in all posted job details controller");
+		List<JobDetails> jobDetailsList =jobService.getAllPostedJobs("123456789123");
+		List<AllPostedJobDetails> allPostedJobs=jobService.processAllPostedJobs(jobDetailsList);
+		
+		System.out.println("allPostedJobs");
+		//StringBuilder sb=new StringBuilder();
+
+		
+		m.addAttribute("allPostedJobList",allPostedJobs);
+		
+		return "posted_job_list";	
+	}
 }
