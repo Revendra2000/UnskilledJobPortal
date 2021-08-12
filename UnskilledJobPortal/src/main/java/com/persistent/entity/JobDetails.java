@@ -51,7 +51,7 @@ public class JobDetails {
 	@Column(name = "LAST_DATE" , columnDefinition = "DATE ")
 	private Date lastDate;
 	
-	@Column(name = "JOB_TYPE" , columnDefinition = "VARCHAR2 (10)")
+	@Column(name = "JOB_TYPE" , columnDefinition = "VARCHAR2 (20)")
 	private String jobType;
 	
 	@Column(name = "JOB_ASSIGNED_TO" , columnDefinition = "VARCHAR2 (12)")

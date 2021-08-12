@@ -18,7 +18,7 @@ public interface IJobDAO extends CrudRepository<JobDetails, Integer> {
 //		int insertJobDetails(String aadharNo,int categoryId,Date dateOfPost,int estimatedCost,String jobType,Date lastDate,String workArea,String workCity,String workDescription,String workPincode,String workState);
 	
 	
-	
+	//used this query because of auto generated value of job id is applied at db end
 	@Modifying
 	@Transactional
 	@Query(value = "insert into job_details (aadhar_no,category_id,date_of_post,estimated_cost,job_type,last_date,work_area,work_city,work_description,work_pincode,work_state) values (?1 ,?2 ,?3 ,?4 ,?5 ,?6 ,?7 ,?8 ,?9 ,?10 ,?11 ) ", nativeQuery = true)
