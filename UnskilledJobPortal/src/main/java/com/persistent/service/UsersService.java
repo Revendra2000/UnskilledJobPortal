@@ -12,8 +12,13 @@ public class UsersService {
 	@Autowired
 	private IUsersDAO dao;
 	
-	Users getUserByAadharNo(String aadharNo)
+	public Users getUserByAadharNo(String aadharNo)
 	{
 		return dao.findByAadhar(aadharNo);
+	}
+	
+	public String getUserAadharUsingUserId(int userId)
+	{
+		return dao.findAadharByUserId(userId);
 	}
 }
