@@ -13,6 +13,11 @@ public class UsersService {
 	@Autowired
 	private IUsersDAO dao;
 	
+	public Users registerUser(Users u)
+	{
+		return dao.save(u);
+	}
+	
 	public Users getUserByAadharNo(String aadharNo)
 	{
 		return dao.findByAadhar(aadharNo);
@@ -30,5 +35,6 @@ public class UsersService {
 		return u.getFirstName()+" "+u.getLastName();
 	}
 
+	
 	
 }

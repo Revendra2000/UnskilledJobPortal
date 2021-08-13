@@ -140,9 +140,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">user name</a>
+                                                        <a href="#"><span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></a>
                                                     </h5>
-                                                    <span class="email">addar card no.</span>
+                                                    <span class="email"><span th:text="${user.aadhar}"></span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -190,12 +190,12 @@
                                     <div class="card-body">
                                         <div class="mx-auto d-block">
                                             <img class="rounded-circle mx-auto d-block" src="images/icon/user.png" alt="Card image cap">
-                                            <h5 class="text-sm-center mt-2 mb-1">Full Name</h5>
-                                            <div class="location text-sm-center">Aadar Card</div>
-                                            <div class="location text-sm-center">Address</div>
-                                            <div class="location text-sm-center">Mobile no</div>
-                                            <div class="location text-sm-center">Password</div>
-                                            
+                                            <h5 class="text-sm-center mt-2 mb-1"><i class="fa fa-user" aria-hidden="true"></i> <span th:text="${user.firstName}"></span> <span th:text="${user.lastName}"></span></h5><br>
+                                            <div class="location text-sm-center"><i class="fa fa-id-card" aria-hidden="true"></i> <span th:text="${user.aadhar}"></span></div><br>
+                                           <div class="location text-sm-center"><i class="fa fa-map-marker" aria-hidden="true"></i> <span th:text="${user.address}"></span></div><br>
+                                           <div class="location text-sm-center"><i class="fa fa-phone" aria-hidden="true"></i> <span th:text="${user.contact}"></span></div><br>
+                                            <div class="location text-sm-center"><i class="fa fa-genderless" aria-hidden="true"></i> <span th:text="${user.gender}"></span></div><br>
+                                         
                                         </div>
                                         <hr>
                                         

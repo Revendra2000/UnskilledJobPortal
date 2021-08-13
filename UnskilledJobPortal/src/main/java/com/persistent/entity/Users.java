@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -13,26 +15,37 @@ public class Users {
 	@Column(name = "USER_ID" , columnDefinition = "NUMBER", nullable = false)
     private int userId;
 	
+	
+	@NotBlank(message="Aadhar No. is rquired.")
+	@Size(min=12,message="At most 12 number can be allowed.")
 	@Id
 	@Column(name = "AADHAR_NO" , columnDefinition = "VARCHAR2 (12)")
 	private String aadhar;	
 	
 	@Column(name="FIRST_NAME" , columnDefinition = "VARCHAR2 (30)")
+	@NotBlank(message="First Name is rquired.")
 	private String firstName;
 	
 	@Column(name="LAST_NAME" , columnDefinition = "VARCHAR2 (30)")
+	@NotBlank(message="Last Name is rquired.")
 	private String lastName;
 	
 	@Column(name="GENDER" , columnDefinition = "VARCHAR2 (1) CHECK (GENDER IN ('F','M'))")
+	@NotBlank(message=" Gender is rquired.")
+	@Size(min=1, max=5,message="eg. Male or Female")
 	private String gender;
 	
-	@Column(name="PASSWORD" , columnDefinition = "VARCHAR2 (50)" , nullable = false)
+	@Column(name="PASSWORD" , columnDefinition = "VARCHAR2 (100)" , nullable = false)
+	@NotBlank(message="Password is rquired.")
 	private String password;
 	
 	@Column(name="CONTACT" , columnDefinition = "VARCHAR2 (10)" , nullable = false)
+	@NotBlank(message="Mobile No. is rquired.")
+	@Size(min=10, max=10,message="must be of 10 digits")
 	private String contact;
 	
 	@Column(name="ADDRESS" , columnDefinition = "VARCHAR2 (50)")
+	@NotBlank(message="Address is rquired.")
 	private String address;
 	
 	@Column(name="ROLES" , columnDefinition = "VARCHAR2(15)  DEFAULT 'ROLE_USER'")

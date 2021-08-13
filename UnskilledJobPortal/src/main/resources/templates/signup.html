@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta charset="ISO-8859-1">
 <title>Sign up</title>
@@ -95,64 +95,71 @@ margin-bottom: 100px;
 
 </head>
 <body >
+	
+	
+	
 	<div class="container">
+			<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+  				<p class="text-center" th:text="${session.message.content}"></p>
+  				
+  				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
 		<div class="myCard">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="myLeftCtn">
 					
-					<form class="myForm text-center">
+				<form novalidate action="" th:action="@{/do_register}" th:object="${user}" method="POST" class="myForm text-center" >
 					<header>Sign Up</header>
 						<div class="form-group">
 							
-								<input type="text" class="form-control my-3 p-3" placeholder="First Name" required="required">
-							
+								<input type="text" name="firstName"  th:field="*{firstName}" th:classappend="${#fields.hasErrors('firstName') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="First Name" required th:value="${user.firstName}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('firstName')}" th:text="${e}">
+							      </div>
 						</div>
 						<div class="form-group">
 							
-								<input type="text" class="form-control my-3 p-3" placeholder="Last Name" required="required">
-							
+								<input type="text" name="lastName" th:field="*{lastName}" th:classappend="${#fields.hasErrors('lastName') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Last Name" required th:value="${user.lastName}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('lastName')}" th:text="${e}">
+							      </div>
 						</div>
 						<div class="form-group">
 							
-								<input type="text" class="form-control my-3 p-3" placeholder="Adhar Card No." required="required">
-							
-						</div>
-						
-						<div class="form-group">
-							
-								<input type="password" class="form-control my-3 p-3" placeholder="Password" required="required">
-							
-						</div>
-						<div class="form-group">
-							
-								<input type="text" class="form-control my-3 p-3" placeholder="Address" required="required">
-							
-						</div>
-						<div class="form-group">
-							
-								<input type="text" class="form-control my-3 p-3" placeholder="Gender" required="required">
-							
-						</div>
-						<div class="form-group">
-							
-								<input type="text" class="form-control my-3 p-3" placeholder="User Type" required="required">
-							
-						</div>
-						<div class="form-group">
-							
-								<input type="text" class="form-control my-3 p-3" placeholder="Mobile No." required="required">
-							
-						</div>
-						<div class="form-group">
-							
-								<input type="text" class="form-control my-3 p-3" placeholder="Skilles" required="required">
-							
+								<input type="text"  name="aadhar" th:field="*{aadhar}" th:classappend="${#fields.hasErrors('aadhar') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Adhar Card No." required th:value="${user.aadhar}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('aadhar')}" th:text="${e}">
+							      </div>
 						</div>
 						
 						<div class="form-group">
 							
-								<button type="button" class="btn1">
+								<input type="password" name="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Password" required th:value="${user.password}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('password')}" th:text="${e}">
+							      </div>
+						</div>
+						<div class="form-group">
+							
+								<input type="text" name="address" th:field="*{address}" th:classappend="${#fields.hasErrors('address') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Address" required th:value="${user.address}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('address')}" th:text="${e}">
+							      </div>
+						</div>
+						<div class="form-group">
+							
+								<input type="text" name="gender" th:field="*{gender}" th:classappend="${#fields.hasErrors('gender') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Gender" required th:value="${user.gender}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('gender')}" th:text="${e}">
+							      </div>
+						</div>
+						
+						<div class="form-group">
+							
+								<input type="text" name="contact" th:field="*{contact}" th:classappend="${#fields.hasErrors('contact') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Mobile No." required th:value="${user.contact}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('contact')}" th:text="${e}">
+							      </div>
+						</div>
+						
+						
+						<div class="form-group">
+							
+								<button type="submit" class="btn1">
 								Register
 								</button>
 							

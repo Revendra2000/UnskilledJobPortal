@@ -109,12 +109,12 @@
 			<optional>true</optional>
 		</dependency>
 		
-<!-- Spring security  
+<!-- Spring security  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>	
--->
+		</dependency>
+
 	</dependencies>
 
 	<build>
