@@ -120,5 +120,4 @@ public class PostJobForm {
 				+ ", estimatedCost=" + estimatedCost + ", lastDate=" + lastDate + ", jobType=" + jobType + "]";
 	}  
 	 
-	 //th:field="*{workCity}"
 }

@@ -9,25 +9,37 @@ import org.springframework.stereotype.Service;
 import com.persistent.dao.IAllAppliedJobDAO;
 import com.persistent.entity.AppliedUserDetails;
 import com.persistent.entity.Users;
+import com.persistent.dao.IUsersDAO;
+import com.persistent.entity.AllAppliedJob;
 
 @Service("allApplliedJobService")
 public class AllAppliedJobService {
 
 	@Autowired
-	private IAllAppliedJobDAO dao;
-	
+	private IAllAppliedJobDAO dao;	
 
 	@Autowired
 	private UsersService userService;
+	
+	
+	public void applyJob(int job_id,int userId)
+	{
+		AllAppliedJob job=new AllAppliedJob();
+		job.setjobId(job_id);
+		job.setAadharWorker(userService.getUserAadharUsingUserId(userId));
+		System.out.println(job);
+		dao.save(job);
+	}
+	
 	
 	public List<String> getAllWhoApplied(int jobId)
 	{
 		System.out.println("In get all who applied");
 		List<String> list= dao.findAllUserAadhar(jobId);
 		System.out.println("List"+list);
-		//System.out.println(list);
 		return list;
 	}
+	
 	
 	public List<AppliedUserDetails> getDetailsOfAppliedUser(List<String> usersAadharNos,String jobId)
 	{
@@ -42,13 +54,10 @@ public class AllAppliedJobService {
 			aud.setAadharNo(aadhar);
 			aud.setAddress(user.getAddress());
 			
-//			System.out.println(user.getGender());
-			
 			if(user.getGender().equalsIgnoreCase("M"))
 				aud.setGender("Male");
 			else
 				aud.setGender("Female");
-//			System.out.println(aud.getGender());
 			aud.setJobId(jobId);
 			
 			aud.setFullName(user.getFirstName()+" "+user.getLastName());
@@ -60,5 +69,7 @@ public class AllAppliedJobService {
 		System.out.println("AUD"+appliedUserDetailsList);
 		return appliedUserDetailsList;
 	}
+	
+	
 	
 }

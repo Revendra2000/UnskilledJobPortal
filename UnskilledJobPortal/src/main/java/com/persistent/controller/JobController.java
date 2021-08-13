@@ -39,12 +39,12 @@ public class JobController {
 	
 	
 	
-	
 	@GetMapping("/job_post")
 	public String showPostJob(Model m,HttpServletRequest request) {
 		
-		//This method will show the job_post.html page and will also add model atrribute to store the data of post job form
-		System.out.println("In show post job");
+		//This method will show the job_post.html page and will also add model atrribute to store the data of post job form		
+
+			System.out.println("In show post job");
 		
 		
 		//After adding session uncomment this code
@@ -67,6 +67,9 @@ public class JobController {
 //			System.out.println("User not logged in");
 //			return "redirect:/login";
 //		}
+		
+		if(LoginController.session==null)
+			return "redirect:/login";
 			
 			
 		//<------------- CategoryName for Refernece ------------------------>
@@ -119,7 +122,9 @@ public class JobController {
 		
 		return "job_post";
 	}
+
 	
+
 	@PostMapping("/job_post")
 	public String processPostJob(@Valid @ModelAttribute("postJobForm") PostJobForm postJobForm,BindingResult result,Model m,HttpServletRequest request) {
 	
@@ -151,7 +156,20 @@ public class JobController {
 //			return "redirect:/login";
 //		}
 		
+
+		int userId=(int) LoginController.session.getAttribute("userId");
+		String userType=(String) LoginController.session.getAttribute("userType");
+		if(LoginController.session==null)
+			return "redirect:/login";
 		
+		else //(userId!=null) 
+			{			
+				if(userType=="admin")
+				{
+					System.out.println("Accessed denied, Admin cannot access users page");
+					return "redirect:/access_denied_user"; //if admin try to access a users page
+				}
+			}
 	
 		System.out.println(postJobForm);
 		
@@ -170,9 +188,9 @@ public class JobController {
 		
 		System.out.println("In process Post job");
 		
-		//String aadharNo =usersService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
+		String aadharNo =usersService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
 		
-		String aadharNo =usersService.getUserAadharUsingUserId(1); ////comment this code after uncommenting session code
+		//String aadharNo =usersService.getUserAadharUsingUserId(1); ////comment this code after uncommenting session code
 		
 		System.out.println("AadharNo according to userId "+aadharNo);
 		
@@ -214,6 +232,9 @@ public class JobController {
 //			System.out.println("User not logged in");
 //			return "redirect:/login";
 //		}
+		
+		if(LoginController.session==null)
+			return "redirect:/login";
 		
 		//String aadharNo =usersService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
 		
@@ -263,6 +284,9 @@ public class JobController {
 //			System.out.println("User not logged in");
 //			return "redirect:/login";
 //		}
+		
+		if(LoginController.session==null)
+			return "redirect:/login";
 		
 		
 		List<AppliedUserDetails> userDetails=jobService.getDetailsOfAllAppliers(jobId);
@@ -321,6 +345,8 @@ public class JobController {
 //			return "redirect:/login";
 //		}
 		
+		if(LoginController.session==null)
+			return "redirect:/login";		
 			
 		int result=jobService.assignJobToAadharNo(jobId, aadharNo);
 		

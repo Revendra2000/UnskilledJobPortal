@@ -194,36 +194,33 @@
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
-                                            <tr>
-                                                <th>Category Name</th>
-                                                <th>Work Info.</th>
-                                                <th>Address </th>
-                                                <th>Apply date</th>
-                                                <th>Operation</th>
-                                                
 
+                                             <tr>
                                                 
-                                            </tr>
+                                                <th>Category</th>
+                                                <th>Work Location</th>
+                                                <th>Job Owner</th>
+                                                <th>Date of post</th>
+                                                <th>Status</th>
+                                                </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                           
+                                           <tr th:each="list:${jobList}">
+                                                <td th:text="${list.getCategory()}"></td>
+                                                <td th:text="${list.getLocation()}"></td>
+                                                <td th:text="${list.getOwner()}"></td>
+                                                <td th:text="${list.getDateOfPost()}"></td>
+                                                <td th:text="${list.getStatus()}"></td>
+                                                <!-- 
                                                 
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
                                                 <td><div style="margin-right: 25px;">
                                                     <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
-                                           <tr>
+                                          
+                                                 -->
                                                 
-                                                <td>full name</td>
-                                                <td>abc xyz pqr</td>
-                                                <td>skills add karo</td>
-                                                <td>15/4/2021</td>
-                                                <td><div style="margin-right: 25px;">
-                                                    <div><a href="#" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                            </tr>
+                                                 </tr> 
+
                                             
                                         </tbody>
                                     </table>

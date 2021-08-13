@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.persistent.service.CategoryService;
+
 @Entity
 @Table(name="JOB_DETAILS")
 public class JobDetails {
@@ -33,7 +37,7 @@ public class JobDetails {
 	@Column(name = "WORK_AREA" , columnDefinition = "VARCHAR2 (50)")
 	private String workArea;
 	
-	@Column(name = "WORK_DESCRIPTION" , columnDefinition = "VARCHAR2 (100)")
+	@Column(name = "WORK_DESCRIPTION" , columnDefinition = "VARCHAR2 (1000)")
 	private String workDescription;
 	
 	@Column(name="IS_ACTIVE" , columnDefinition = "VARCHAR2(1)  DEFAULT 'T'")
@@ -48,7 +52,7 @@ public class JobDetails {
 	@Column(name = "LAST_DATE" , columnDefinition = "DATE ")
 	private Date lastDate;
 	
-	@Column(name = "JOB_TYPE" , columnDefinition = "VARCHAR2 (20)")
+	@Column(name = "JOB_TYPE" , columnDefinition = "VARCHAR2 (30)")
 	private String jobType;
 	
 	@Column(name = "JOB_ASSIGNED_TO" , columnDefinition = "VARCHAR2 (12)")
@@ -189,6 +193,16 @@ public class JobDetails {
 	public void setJobAssignedTo(String jobAssignedTo) {
 		this.jobAssignedTo = jobAssignedTo;
 	}
+	
+//	@Autowired
+//	CategoryService service;
+//	
+//	public String getCategoryNameById()
+//	{
+//		
+//		return service.getCategoryById(this.getCategoryId());
+//	}
+	
 
 	@Override
 	public String toString() {

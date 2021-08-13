@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.persistent.dao.IAllAppliedJobDAO;
 import com.persistent.dao.IJobDAO;
 import com.persistent.entity.AllPostedJobDetails;
 import com.persistent.entity.AppliedUserDetails;
@@ -17,7 +19,7 @@ import com.persistent.entity.PostJobForm;
 
 @Service("jobService")
 public class JobService {
-
+	
 	@Autowired
 	private IJobDAO dao;
 
@@ -25,7 +27,13 @@ public class JobService {
 	private CategoryService categoryService;
 	
 	@Autowired
-	private AllAppliedJobService allAppliedJobService;
+	private AllAppliedJobService allAppliedJobService;	
+	
+	@Autowired
+	private IAllAppliedJobDAO appliedDao;
+	
+	@Autowired
+	private UsersService userService;
 	
 	
 	public JobDetails populateJobEntity(PostJobForm postJobForm,String aadharCard)
@@ -142,4 +150,49 @@ public class JobService {
 		return dao.findSelectedWorkerAadharNo(jobId);
 	}
 	
+	
+	//from applieJobController
+
+	
+	public JobDetails getJobDetailsById(int id)
+	{
+		return dao.findByJobId(id);
+	}
+	
+	public List<JobDetails> jobsAppliedByWorkerById(int userId)
+	{
+		
+		Set<Integer> id_list=appliedDao.jobsAppliedByWorkerById(userService.getUserAadharUsingUserId(userId));
+		List<JobDetails> jobs=new ArrayList<JobDetails>();
+		
+		for(int id:id_list)
+		{
+			JobDetails j=new JobDetails();
+			j=dao.findByJobId(id);
+			jobs.add(j);
+		}		
+		return jobs;
+	}
+	
+	public String getStatusofJob(int jobId,int userId)
+	{
+		JobDetails job=dao.findByJobId(jobId);
+		
+		String aadhar=userService.getUserAadharUsingUserId(userId);
+		if(job.getJobAssignedTo()==null)
+		{
+			return "PENDING";
+		}
+		else if(job.getJobAssignedTo()==aadhar)
+		{
+			return "ACCEPTED";
+		}
+		else 
+			return "REJECTED";
+	}
+
+//from home page branch
+	public List<JobDetails> getAllJobs() {
+		return dao.getAllJobs();
+	}
 }

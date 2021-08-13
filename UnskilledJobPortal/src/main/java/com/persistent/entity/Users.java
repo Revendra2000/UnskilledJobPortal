@@ -1,5 +1,5 @@
 package com.persistent.entity;
-
+	
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -135,9 +135,6 @@ public class Users {
 				+ ", lastName=" + lastName + ", gender=" + gender + ", password=" + password + ", contact=" + contact
 				+ ", address=" + address + ", roles=" + roles + "]";
 	}
-	
-	
-	
 	
 	
 }

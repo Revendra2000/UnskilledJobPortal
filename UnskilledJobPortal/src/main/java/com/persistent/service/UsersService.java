@@ -1,3 +1,4 @@
+
 package com.persistent.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,13 @@ public class UsersService {
 	{
 		return dao.findAadharByUserId(userId);
 	}
+	
+	//for appliedJobController to fetch name of logged users
+	public String getNameById(int id)
+	{
+		Users u=dao.findByUserId(id);		
+		return u.getFirstName()+" "+u.getLastName();
+	}
+
+	
 }
