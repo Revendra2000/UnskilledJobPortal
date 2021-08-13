@@ -216,6 +216,12 @@
                                             <div class="location text-sm-center">Type of work: <td th:text="${type}"></td></div>
                                             <div class="location text-sm-center">Last date to apply: <td th:text="${date}"></td></div>
                                           
+                                           <div class="card-text text-sm-center">
+                                            <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Apply
+                                        </button></a>                                           
+                                        
+                                    </div>
                                            
                                             
                                              
@@ -241,14 +247,7 @@
 											 -->
 											
 
-                                            <div class="card-text text-sm-center">
-                                            <a th:href="@{/jobApplied/{id}(${id})}" ><button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Apply
-                                        </button></a>
                                             
-                                        
-                                    </div>
-
                                     </section>
                                 </aside>
                             </div>
