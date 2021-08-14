@@ -206,7 +206,65 @@
                                         <div class="card-body">
                                         <div class="mx-auto d-block" >
                                             
+                                            
+                                            <div class="table-responsive m-b-40" style="text-align: left">
+                                    			<table class="table table-borderless table-data3">
+                                    				<tr>
+                                    					<th>Description</th><td th:text="${desc}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work State</th><td th:text="${state}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work City</th><td th:text="${city}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work Area</th><td ><span th:text="${area}"></span> , <span th:text="${pin}"></span></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Salary</th><td>Rs: <span th:text="${cost}"></span></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Dutration</th><td th:text="${type}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Last date to apply:</th><td th:text="${date}"></td>
+                                    				</tr>
+                                    			 </table>
+                                   				 <div class="card-text text-sm-center">
+	                                            <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
+			                                            <i class="fa fa-dot-circle-o"></i> Apply
+			                                        </button></a>  
+			                                   </div>
+                                		</div>
+                                            
 
+											<!-- 
+																					
+                                       				 <thead>
+                                             			<tr>                                                
+			                                                <th>Description</th>
+			                                                <th>Work State</th>
+			                                                <th>Work City</th>
+			                                                <th>Work Area</th>
+			                                                <th>Salary</th>
+			                                                <th>Dutration</th>
+			                                                <th>Last date to apply:</th>
+                                               			</tr>
+			                                        </thead>
+			                                        <tbody>
+			                                           
+			                                           <tr>
+			                                                <td th:text="${desc}"></td>
+			                                                <td th:text="${state}"></td>
+			                                                <td th:text="${city}"></td>
+			                                                <td ><span th:text="${area}"></span> , <span th:text="${pin}"></span></td>
+			                                                <td th:text="${cost}">Rs.</td>
+			                                                <td th:text="${type}"></td>
+			                                                <td th:text="${date}"></td>
+                                               		 	</tr>                                             
+                                        			</tbody>
+											
 											<div class="location text-sm-center">Work Description:<td th:text="${desc}"></td></div>
                                             <div class="location text-sm-center">Work State: <td th:text="${state}"></td></div>
                                             <div class="location text-sm-center">Work City: <td th:text="${city}"></td></div>
@@ -218,36 +276,13 @@
                                           
                                            <div class="card-text text-sm-center">
                                             <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Apply
-                                        </button></a>                                           
-                                        
-                                    </div>
-                                           
-                                            
-                                             
+		                                            <i class="fa fa-dot-circle-o"></i> Apply
+		                                        </button></a>  
+		                                   </div>
 											
-											<!-- 
-											 <h5 class="text-sm-center mt-2 mb-1" th:text="${jobs.getJobId()}"></h5>
-                                            <h5 class="text-sm-center mt-2 mb-1" th:text="${jobs.getCategoryId()}"></h5>
-                                            <div class="location text-sm-center" th:text="${jobs.getWorkDescription()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getWorkState()}">}</div>
-                                            <div class="location text-sm-center" th:text="${jobs.getWorkCity()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getWorkPincode()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getWorkArea()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getEstimatedCost()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getJobType()}"></div>
-                                            <div class="location text-sm-center" th:text="${jobs.getLastDate()}"></div>
-											
-											<div class="card-text text-sm-center">
-                                            <a th:href="@{/jobApplied/{id}(id=${jobs.getJobId()})}" ><button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Apply
-                                        </button></a>                                          
-                                        
-                                    </div>
 											 -->
-											
-
-                                            
+                                        </div>
+                                      </div>
                                     </section>
                                 </aside>
                             </div>
