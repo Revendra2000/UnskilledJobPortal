@@ -179,11 +179,14 @@ public class JobService {
 		JobDetails job=dao.findByJobId(jobId);
 		
 		String aadhar=userService.getUserAadharUsingUserId(userId);
+		
+		System.out.println("from ob_service........."+aadhar+".....assigned to...."+job.getJobAssignedTo());
+		
 		if(job.getJobAssignedTo()==null)
 		{
 			return "PENDING";
 		}
-		else if(job.getJobAssignedTo()==aadhar)
+		else if(job.getJobAssignedTo().equalsIgnoreCase(aadhar))
 		{
 			return "ACCEPTED";
 		}
