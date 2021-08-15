@@ -76,7 +76,7 @@ public class AppliedJobDetails {
 	@Override
 	public String toString() {
 		return "AppliedJobDetails [jobId=" + jobId + ", aadhar=" + aadhar + ", category=" + category + ", owner="
-				+ owner + ", dateOfPost=" + dateOfPost + ", status=" + status + "]";
+				+ owner + ", dateOfPost=" + dateOfPost + ", status=" + status + ", location=" + location + "]";
 	}
 	
 	
