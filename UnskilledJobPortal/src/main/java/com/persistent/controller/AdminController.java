@@ -100,14 +100,16 @@ public class AdminController {
 		return "admin/admin_viewallcategory";
 	}
 	
-	@RequestMapping(value = "/delete/{category_id}",method = RequestMethod.GET)
-	public String deleteCategory(@PathVariable (value = "category_id") Integer category_id,HttpSession session) {
-		
-		
-		this.adminUserService.getCategoryById(category_id);
-		session.setAttribute("message", new Massage("Category deleted Successfully..","alert-success"));
-		return "redirect:/admin/admin_viewallcategory";
-	}
+//	left for future scope......
+	
+//	@RequestMapping(value = "/delete/{category_id}",method = RequestMethod.GET)
+//	public String deleteCategory(@PathVariable (value = "category_id") Integer category_id,HttpSession session) {
+//		
+//		
+//		this.adminUserService.getCategoryById(category_id);
+//		session.setAttribute("message", new Massage("Category deleted Successfully..","alert-success"));
+//		return "redirect:/admin/admin_viewallcategory";
+//	}
 	
 	
 	
@@ -126,11 +128,13 @@ public class AdminController {
 		return "admin/admin_viewallusers";
 	}
 	
-	@RequestMapping(value = "/userdelete/{user_id}",method = RequestMethod.GET)
-	public String deleteUser(@PathVariable (value = "user_id") Integer user_id,HttpSession session) {
-		this.userRepository.findAadharByUserId(user_id);
-		session.setAttribute("message", new Massage("Employee deleted Successfully..","alert-success"));
-		return "redirect:/admin/admin_viewallusers";
-	}
+	
+//	left for future scope.....
+//	@RequestMapping(value = "/userdelete/{user_id}",method = RequestMethod.GET)
+//	public String deleteUser(@PathVariable (value = "user_id") Integer user_id,HttpSession session) {
+//		this.userRepository.findAadharByUserId(user_id);
+//		session.setAttribute("message", new Massage("Employee deleted Successfully..","alert-success"));
+//		return "redirect:/admin/admin_viewallusers";
+//	}
 
 }

@@ -83,6 +83,7 @@ public class TestControllerForFrontEnd {
 			
 			//---------session check over----------//
 			
+			
 			Users u=userService.getUserByAadharNo(principal.getName());
 			user.setAadhar(u.getAadhar());
 			user.setPassword(u.getPassword());

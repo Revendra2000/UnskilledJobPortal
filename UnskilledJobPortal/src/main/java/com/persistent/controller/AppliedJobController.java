@@ -119,7 +119,7 @@ public class AppliedJobController {
 
 				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
 			//---------session check over----------//	
-		
+				
 		
 		List<AppliedJobDetails> jobDetails=new ArrayList<AppliedJobDetails>();
 		
@@ -131,7 +131,7 @@ public class AppliedJobController {
 		{
 			AppliedJobDetails detail=new AppliedJobDetails();
 			
-			detail.setOwner(userService.getNameById(jobs.getJobId()));
+			detail.setOwner(userService.getNameById(userId));
 			
 			
 			detail.setAadhar(userService.getUserAadharUsingUserId(userId));

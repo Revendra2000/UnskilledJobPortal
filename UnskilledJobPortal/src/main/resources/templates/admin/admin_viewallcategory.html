@@ -107,29 +107,30 @@ th:replace="admin/base::layout(~{::section})">
   						<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 						</div> 
                			<div class="row m-t-30">
+               			
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
+                                <div class="table-responsive m-b-40" >
+                                    <table class="table table-borderless table-data3" >
                                         <thead>
-                                            <tr>
-                                                
+                                            <tr align="center">
                                                 <th>Category Name</th>
-                                                <th>Operation</th>
-                                                
-
-                                                
+                                       
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="c:${category}">
-                                                
+                                            <tr th:each="c:${category}" style="text-align: center">
+                                              
                                                 <td th:text="${c.categoryName}"></td>
-                                                
-                                                 <td><div style="margin-right: 25px;">
+                                              
+                                                <!-- 
+                                                <td><div style="margin-right: 25px;">
                                                     <div><a href="#" th:onclick="|deleteCategory(${c.categoryId})|" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
                                                 
-                                            </tr>
+                                                
+                                                 -->
+                                                 
+                                           </tr>
                                             
                                           
                                         </tbody>

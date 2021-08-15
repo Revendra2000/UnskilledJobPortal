@@ -51,6 +51,8 @@ public class JobService {
 		String pincode=String.valueOf(postJobForm.getWorkPincode());
 		
 		jobDetails.setWorkPincode(pincode);
+		
+		System.out.println("postJobForm in service,,......"+postJobForm.getWorkState());
 		jobDetails.setWorkState(postJobForm.getWorkState());
 		
 		//Converting String to java.util Date
@@ -81,10 +83,11 @@ public class JobService {
 		return jobDetails;
 	}
 	
+		
 	
 	public void addJobDetails(JobDetails job)
 	{
-		dao.insertJobDetails(job.getAadharNo(),job.getCategoryId(),job.getDateOfPost(),job.getEstimatedCost(),job.getJobType(),job.getLastDate(),job.getWorkArea(),job.getWorkCity(),job.getWorkDescription(),job.getWorkPincode(),job.getWorkPincode());
+		dao.insertJobDetails(job.getAadharNo(),job.getCategoryId(),job.getDateOfPost(),job.getEstimatedCost(),job.getJobType(),job.getLastDate(),job.getWorkArea(),job.getWorkCity(),job.getWorkDescription(),job.getWorkPincode(),job.getWorkState());
 	}
 	
 	

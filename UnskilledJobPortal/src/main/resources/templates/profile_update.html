@@ -25,24 +25,30 @@ th:replace="admin/base::layout(~{::section})">
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                         <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{dashboard}">
+                        <li class="has-sub">
+                            <a class="js-arrow"  th:href="@{/dashboard}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
-                         <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{all_job_list}">
+                        <!-- <li class="has-sub">
+                            <a class="js-arrow" th:href="" th:th:href="@{/all_job_list}">
                                 <i class="fa fa-book" aria-hidden="true"></i>All Jobs</a>
                             
+                        </li>-->
+                        <li class="has-sub">
+                            <a href="" th:href="@{/all_applied_jobs}">
+                               <i class="fa fa-bookmark" aria-hidden="true"></i>All Jobs</a>
                         </li>
-                       <li class="has-sub">
-                            <a href="" th:href="@{all_applied_jobs}">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i>Applied Jobs</a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="" th:href="@{/all_applied_jobs}">
+                               <i class="fa fa-bookmark" aria-hidden="true"></i>Applied Jobs</a>
                         </li>
                        
                     </ul>
                 </div>
             </nav>
+            
         </header>
         <!-- END HEADER MOBILE-->
 
@@ -57,17 +63,17 @@ th:replace="admin/base::layout(~{::section})">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                          <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{dashboard}">
+                            <a class="js-arrow" href="" th:href="@{/dashboard}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
                          <li class="has-sub">
-                            <a class="js-arrow" href="" th:href="@{all_job_list}">
+                            <a class="js-arrow" href="" th:href="@{/all_job_list}">
                                 <i class="fa fa-book" aria-hidden="true"></i>All Jobs</a>
                             
                         </li>
                        <li class="has-sub">
-                            <a href="" th:href="@{all_applied_jobs}">
+                            <a href="" th:href="@{/all_applied_jobs}">
                                 <i class="fa fa-bookmark" aria-hidden="true"></i>Applied Jobs</a>
                         </li>
                         

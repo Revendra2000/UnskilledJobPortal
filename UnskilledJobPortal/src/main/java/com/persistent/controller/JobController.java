@@ -255,7 +255,7 @@ public class JobController {
 		
 		
 		//This method will be invoked when the job poster click on select candidate form all appliers list
-		
+
 		
 		//-----checking if session valid------//	
 		if(principal==null)

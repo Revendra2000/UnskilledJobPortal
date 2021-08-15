@@ -42,6 +42,7 @@ public class LoginController {
 	@RequestMapping(value={"/all_job_list","/"},method=RequestMethod.GET)
 	public String all_job_list(Model m)
 	{		
+		System.out.println("all Jobs available"+jobService.getAllJobs());
 		m.addAttribute("allJobs",jobService.getAllJobs());
 		return "all_job_list";
 	}
