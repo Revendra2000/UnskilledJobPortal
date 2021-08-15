@@ -55,7 +55,7 @@ public class Users {
 		super();
 	}
 
-	public Users(int userId, int id, String aadhar, String firstName, String lastName, String gender, String password,
+	public Users(int userId,  String aadhar, String firstName, String lastName, String gender, String password,
 			String contact, String address, String roles) {
 		super();
 		this.userId = userId;

@@ -1,12 +1,12 @@
 package com.persistent.entity;
 
-public class Massage {
+public class Message {
 	private String content;
 	private String type;
-	public Massage() {
+	public Message() {
 		super();
 	}
-	public Massage(String content, String type) {
+	public Message(String content, String type) {
 		super();
 		this.content = content;
 		this.type = type;
@@ -27,7 +27,7 @@ public class Massage {
 	
 	@Override
 	public String toString() {
-		return "Massage [content=" + content + ", type=" + type + "]";
+		return "Message [content=" + content + ", type=" + type + "]";
 	}
 	
 	

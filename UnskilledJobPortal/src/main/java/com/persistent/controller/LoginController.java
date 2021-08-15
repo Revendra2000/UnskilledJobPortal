@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.persistent.entity.Massage;
+import com.persistent.entity.Message;
 import com.persistent.entity.Users;
 
 import com.persistent.service.JobService;
@@ -68,7 +68,7 @@ public class LoginController {
 		try {
 			if(res.hasErrors()) {
 				model.addAttribute("user", user);
-				session.setAttribute("message", new Massage("Something Went Wrong !", "alert-danger"));
+				session.setAttribute("message", new Message("Something Went Wrong !", "alert-danger"));
 				return "signup";
 			}
 			user.setRoles("ROLE_USER");
@@ -77,13 +77,13 @@ public class LoginController {
 			
 			System.out.println("Table" +user);
 			model.addAttribute("user", new Users());
-			session.setAttribute("message", new Massage("Successfully Registered !", "alert-success"));
+			session.setAttribute("message", new Message("Successfully Registered !", "alert-success"));
 			return "signup";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("user",user );
-			session.setAttribute("message", new Massage("Something Went Wrong !"+ e.getMessage(), "alert-danger"));
+			session.setAttribute("message", new Message("Something Went Wrong !"+ e.getMessage(), "alert-danger"));
 			return "signup";
 			
 		}

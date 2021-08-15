@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.persistent.dao.IUsersDAO;
 import com.persistent.entity.Category;
-import com.persistent.entity.Massage;
+import com.persistent.entity.Message;
 import com.persistent.entity.Users;
 import com.persistent.service.CategoryService;
 import com.persistent.service.UsersService;
@@ -68,17 +68,17 @@ public class AdminController {
 		try {
 			if(res.hasErrors()) {
 				model.addAttribute("category", category);
-				session.setAttribute("message", new Massage("Something Went Wrong !", "alert-danger"));
+				session.setAttribute("message", new Message("Something Went Wrong !", "alert-danger"));
 				return "admin/admin_add_category";
 			}
 			adminUserService.addCategory(category);
-			session.setAttribute("message", new Massage("Successfully Inserted !", "alert-success"));
+			session.setAttribute("message", new Message("Successfully Inserted !", "alert-success"));
 			return "admin/admin_add_category";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("category", category);
-			session.setAttribute("message", new Massage("Something Went Wrong !"+ e.getMessage(), "alert-danger"));
+			session.setAttribute("message", new Message("Something Went Wrong !"+ e.getMessage(), "alert-danger"));
 			return "admin/admin_add_category";
 			
 		}	
@@ -107,7 +107,7 @@ public class AdminController {
 //		
 //		
 //		this.adminUserService.getCategoryById(category_id);
-//		session.setAttribute("message", new Massage("Category deleted Successfully..","alert-success"));
+//		session.setAttribute("message", new Message("Category deleted Successfully..","alert-success"));
 //		return "redirect:/admin/admin_viewallcategory";
 //	}
 	
@@ -133,7 +133,7 @@ public class AdminController {
 //	@RequestMapping(value = "/userdelete/{user_id}",method = RequestMethod.GET)
 //	public String deleteUser(@PathVariable (value = "user_id") Integer user_id,HttpSession session) {
 //		this.userRepository.findAadharByUserId(user_id);
-//		session.setAttribute("message", new Massage("Employee deleted Successfully..","alert-success"));
+//		session.setAttribute("message", new Message("Employee deleted Successfully..","alert-success"));
 //		return "redirect:/admin/admin_viewallusers";
 //	}
 

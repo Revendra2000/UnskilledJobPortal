@@ -324,7 +324,7 @@ function getScrollbarWidths(el) {
 }
 exports.getScrollbarWidths = getScrollbarWidths;
 // The scrollbar width computations in getScrollbarWidths are sometimes flawed when it comes to
-// retina displays, rounding, and IE11. Massage them into a usable value.
+// retina displays, rounding, and IE11. Message them into a usable value.
 function sanitizeScrollbarWidth(width) {
     width = Math.max(0, width); // no negatives
     width = Math.round(width);
@@ -6552,7 +6552,7 @@ var DragListener = /** @class */ (function () {
     DragListener.prototype.setScrollVel = function (topVel, leftVel) {
         this.scrollTopVel = topVel;
         this.scrollLeftVel = leftVel;
-        this.constrainScrollVel(); // massages into realistic values
+        this.constrainScrollVel(); // messages into realistic values
         // if there is non-zero velocity, and an animation loop hasn't already started, then START
         if ((this.scrollTopVel || this.scrollLeftVel) && !this.scrollIntervalId) {
             this.scrollIntervalId = setInterval(util_1.proxy(this, 'scrollIntervalFunc'), // scope to `this`
@@ -11741,7 +11741,7 @@ function getDraggedElMeta(el) {
     if (stick == null) {
         stick = el.data(prefix + 'stick');
     }
-    // massage into correct data types
+    // message into correct data types
     startTime = startTime != null ? moment.duration(startTime) : null;
     duration = duration != null ? moment.duration(duration) : null;
     stick = Boolean(stick);
