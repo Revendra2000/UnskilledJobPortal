@@ -1,5 +1,6 @@
 package com.persistent.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,12 +48,24 @@ public class AppliedJobController {
 			@RequestParam(name="cost", required=false) String cost,
 			@RequestParam(name="type", required=false) String type,
 			@RequestParam(name="date", required=false) String date,
-			@RequestParam(name="id", required=false) String id,Model m) {
+			@RequestParam(name="id", required=false) String id,Model m
+			, Principal principal) {
 			
-	
-		if(LoginController.session==null)
-			return "redirect:/login";
-		
+		//-----checking if session valid------//	
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+						return "redirect:/login";
+		//---------session check over----------//
+				if(	jobService.getAadharByJobId(Integer.parseInt(id)).equals(principal.getName()))
+				{
+					m.addAttribute("valid", false);
+				}
+				else
+					m.addAttribute("valid", true);
+				
+				
 		m.addAttribute("desc", desc);
 		m.addAttribute("state", state);
 		m.addAttribute("city", city);
@@ -68,14 +81,22 @@ public class AppliedJobController {
 
 //will receive request to apply For a job and redirect to "All Applied Jobs" Page	
 	@GetMapping("/jobApplied/{job_id}")
-	public String applyJob(@PathVariable String job_id,HttpSession session,Model model)
+	public String applyJob(@PathVariable String job_id,HttpSession session,Model model,Principal principal)
 	{
-		if(LoginController.session==null)
+		
+	//-----checking if session valid------//	
+		if(principal==null)
 			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				return "redirect:/login";
+		
+		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+	//---------session check over----------//		
 		
 		int id=Integer.parseInt(job_id);
 		
-		appliedJobService.applyJob(id,(int) session.getAttribute("userId"));
+		appliedJobService.applyJob(id,userId);
 
 		return "redirect:/all_applied_jobs";
 	}
@@ -83,29 +104,39 @@ public class AppliedJobController {
 	
 //will show list of all jobs which logged user has applied for
 	@GetMapping("/all_applied_jobs")
-	public String viewMyAppliedJob(Model model,HttpSession session)
+	public String viewMyAppliedJob(Model model,HttpSession session,Principal principal)
 	{		
-		if(LoginController.session==null)
-			return "redirect:/login";
+		System.out.println(principal);
+		
+		//-----checking if session valid------//	
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+						return "redirect:/login";
+				
+				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+		//---------session check over----------//
 		
 		
 		List<AppliedJobDetails> jobDetails=new ArrayList<AppliedJobDetails>();
 		
-		List<JobDetails> jobsAppled=jobService.jobsAppliedByWorkerById((int) session.getAttribute("userId"));
+		List<JobDetails> jobsAppled=jobService.jobsAppliedByWorkerById(userId);
 		
 //------------------Merging details ofLogged User, his applied Jobs, Job details, and Details of Job owner-------------//
 		
 		for(JobDetails jobs:jobsAppled)
 		{
 			AppliedJobDetails detail=new AppliedJobDetails();
-			detail.setOwner(userService.getNameById((int) session.getAttribute("userId")));
+			
+			detail.setOwner(userService.getNameById(jobs.getJobId()));
 			
 			
-			detail.setAadhar(userService.getUserAadharUsingUserId((int) session.getAttribute("userId")));
+			detail.setAadhar(userService.getUserAadharUsingUserId(userId));
 			detail.setDateOfPost(jobs.getDateOfPost());
 			detail.setJobId(jobs.getJobId());
 			detail.setCategory(catService.getCategoryById(jobs.getCategoryId()));
-			detail.setStatus(jobService.getStatusofJob(jobs.getJobId(), (int) session.getAttribute("userId")));
+			detail.setStatus(jobService.getStatusofJob(jobs.getJobId(), userId));
 			detail.setLocation(jobs.getWorkArea()+" , "+jobs.getWorkCity()+" , "+jobs.getWorkState());
 			
 			jobDetails.add(detail);

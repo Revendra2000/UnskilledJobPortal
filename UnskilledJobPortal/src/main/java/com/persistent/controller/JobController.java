@@ -1,5 +1,6 @@
 package com.persistent.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,41 +36,27 @@ public class JobController {
 	private CategoryService categoryService;
 	
 	@Autowired
-	private UsersService usersService;
+	private UsersService userService;
 	
 	
 	
 	@GetMapping("/job_post")
-	public String showPostJob(Model m,HttpServletRequest request) {
+	public String showPostJob(Model m,Principal principal) {
 		
 		//This method will show the job_post.html page and will also add model atrribute to store the data of post job form		
 
 			System.out.println("In show post job");
 		
 		
-		//After adding session uncomment this code
-		
-//		HttpSession session=request.getSession();
-//		int userId=(int) session.getAttribute("userId"); //userId is logged in user's user_id(auto-generated-value of users table)
-//		String userType=(String) session.getAttribute("userType"); // userType can be "user"/"admin"
-//		
-//		//userType stored in session are "user" and "admin"
-//		if(userId!=null) 
-//		{			
-//			if(userType=="admin")
-//			{
-//				System.out.println("Accessed denied, Admin cannot access users page");
-//				return "redirect:/access_denied_user"; //if admin try to access a users page 
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("User not logged in");
-//			return "redirect:/login";
-//		}
-		
-		if(LoginController.session==null)
-			return "redirect:/login";
+			//-----checking if session valid------//	
+			if(principal==null)
+				return "redirect:/login";
+			else
+				if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+					return "redirect:/login";
+			
+			int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+			//---------session check over----------//
 			
 			
 		//<------------- CategoryName for Refernece ------------------------>
@@ -126,7 +113,7 @@ public class JobController {
 	
 
 	@PostMapping("/job_post")
-	public String processPostJob(@Valid @ModelAttribute("postJobForm") PostJobForm postJobForm,BindingResult result,Model m,HttpServletRequest request) {
+	public String processPostJob(@Valid @ModelAttribute("postJobForm") PostJobForm postJobForm,BindingResult result,Model m,Principal principal) {
 	
 		System.out.println("In process Post job");
 		
@@ -134,42 +121,18 @@ public class JobController {
 		//and if there is any error it will again redirect to job_post page
 		
 		
+		//-----checking if session valid------//	
+		if(principal==null)
+			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				return "redirect:/login";
 		
-		//After adding session uncomment this code
-		
-//		HttpSession session=request.getSession();
-//		int userId=(int) session.getAttribute("userId"); //userId is logged in user's user_id(auto-generated-value of users table)
-//		String userType=(String) session.getAttribute("userType"); // userType can be "user"/"admin"
-//		
-//		//userType stored in session are "user" and "admin"
-//		if(userId!=null) 
-//		{			
-//			if(userType=="admin")
-//			{
-//				System.out.println("Accessed denied, Admin cannot access users page");
-//				return "redirect:/access_denied_user"; //if admin try to access a users page
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("User not logged in");
-//			return "redirect:/login";
-//		}
+		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+		//---------session check over----------//
 		
 
-		int userId=(int) LoginController.session.getAttribute("userId");
-		String userType=(String) LoginController.session.getAttribute("userType");
-		if(LoginController.session==null)
-			return "redirect:/login";
 		
-		else //(userId!=null) 
-			{			
-				if(userType=="admin")
-				{
-					System.out.println("Accessed denied, Admin cannot access users page");
-					return "redirect:/access_denied_user"; //if admin try to access a users page
-				}
-			}
 	
 		System.out.println(postJobForm);
 		
@@ -188,7 +151,7 @@ public class JobController {
 		
 		System.out.println("In process Post job");
 		
-		String aadharNo =usersService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
+		String aadharNo =userService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
 		
 		//String aadharNo =usersService.getUserAadharUsingUserId(1); ////comment this code after uncommenting session code
 		
@@ -206,39 +169,25 @@ public class JobController {
 	}
 	
 	@GetMapping("/posted_job_list")
-	public String show_posted_job_list(Model m,HttpServletRequest request) {
+	public String show_posted_job_list(Model m,Principal principal) {
 		System.out.println("in all posted job details controller");
 		
 		//This method will display the details of all job posted by the loggedn in user
 		
 		
-		//After adding session uncomment this code
-		
-//		HttpSession session=request.getSession();
-//		int userId=(int) session.getAttribute("userId"); //userId is logged in user's user_id(auto-generated-value of users table)
-//		String userType=(String) session.getAttribute("userType"); // userType can be "user"/"admin"
-//		
-//		//userType stored in session are "user" and "admin"
-//		if(userId!=null) 
-//		{			
-//			if(userType=="admin")
-//			{
-//				System.out.println("Accessed denied, Admin cannot access users page");
-//				return "redirect:/access_denied_user"; //if admin try to access a users page
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("User not logged in");
-//			return "redirect:/login";
-//		}
-		
-		if(LoginController.session==null)
+		//-----checking if session valid------//	
+		if(principal==null)
 			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				return "redirect:/login";
 		
-		//String aadharNo =usersService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
+		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+		//---------session check over----------//
 		
-		String aadharNo =usersService.getUserAadharUsingUserId(1); ////comment this code after uncommenting session code
+		String aadharNo =userService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
+		
+		//String aadharNo =userService.getUserAadharUsingUserId(1); ////comment this code after uncommenting session code
 		
 		System.out.println("AadharNo according to userId "+aadharNo);
 		
@@ -257,36 +206,22 @@ public class JobController {
 	}
 	
 	@GetMapping("/job_applied_list")
-	public String job_applied_list(@RequestParam int jobId,Model m,HttpServletRequest request) {
+	public String job_applied_list(@RequestParam int jobId,Model m,Principal principal) {
 		System.out.println("-------------------------- job applied list "+jobId+"-----------------------------------");
 		
 		
 		//This method will show the details of all users who applied for the job
 		
 		
-		//After adding session uncomment this code
-		
-//		HttpSession session=request.getSession();
-//		int userId=(int) session.getAttribute("userId"); //userId is logged in user's user_id(auto-generated-value of users table)
-//		String userType=(String) session.getAttribute("userType"); // userType can be "user"/"admin"
-//		
-//		//userType stored in session are "user" and "admin"
-//		if(userId!=null) 
-//		{			
-//			if(userType=="admin")
-//			{
-//				System.out.println("Accessed denied, Admin cannot access users page");
-//				return "redirect:/access_denied_user"; //if admin try to access a users page
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("User not logged in");
-//			return "redirect:/login";
-//		}
-		
-		if(LoginController.session==null)
+		//-----checking if session valid------//	
+		if(principal==null)
 			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				return "redirect:/login";
+		
+		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+		//---------session check over----------//
 		
 		
 		List<AppliedUserDetails> userDetails=jobService.getDetailsOfAllAppliers(jobId);
@@ -317,36 +252,24 @@ public class JobController {
 	// request url for select_candidate ==> select_candidate?jobId=1&aadharNo=111122223333
 	
 	@GetMapping("/select_candidate")
-	public String select_candidate(@RequestParam int jobId,@RequestParam String aadharNo,Model m,HttpServletRequest request) {
+	public String select_candidate(@RequestParam int jobId,@RequestParam String aadharNo,Model m,Principal principal) {
 		System.out.println("-------------------------- select candidate "+jobId+" aadharNo "+aadharNo+"-----------------------------------");
 		
 		
 		//This method will be invoked when the job poster click on select candidate form all appliers list
 		
 		
-		//After adding session uncomment this code
+		//-----checking if session valid------//
 		
-//		HttpSession session=request.getSession();
-//		int userId=(int) session.getAttribute("userId"); //userId is logged in user's user_id(auto-generated-value of users table)
-//		String userType=(String) session.getAttribute("userType"); // userType can be "user"/"admin"
-//		
-//		//userType stored in session are "user" and "admin"
-//		if(userId!=null) 
-//		{			
-//			if(userType=="admin")
-//			{
-//				System.out.println("Accessed denied, Admin cannot access users page");
-//				return "redirect:/access_denied_user"; //if admin try to access a users page
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("User not logged in");
-//			return "redirect:/login";
-//		}
+		if(principal==null)
+			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				return "redirect:/login";
 		
-		if(LoginController.session==null)
-			return "redirect:/login";		
+		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+		
+		//---------session check over----------//	
 			
 		int result=jobService.assignJobToAadharNo(jobId, aadharNo);
 		

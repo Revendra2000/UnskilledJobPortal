@@ -183,7 +183,7 @@ public class JobService {
 		{
 			return "PENDING";
 		}
-		else if(job.getJobAssignedTo()==aadhar)
+		else if(job.getJobAssignedTo().equals(aadhar))
 		{
 			return "ACCEPTED";
 		}
@@ -195,4 +195,10 @@ public class JobService {
 	public List<JobDetails> getAllJobs() {
 		return dao.getAllJobs();
 	}
+	
+	public String getAadharByJobId(int id)
+	{
+		return dao.findByJobId(id).getAadharNo();
+	}
+	
 }
