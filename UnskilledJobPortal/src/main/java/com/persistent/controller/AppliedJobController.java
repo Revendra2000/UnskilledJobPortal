@@ -52,12 +52,14 @@ public class AppliedJobController {
 			, Principal principal) {
 			
 		//-----checking if session valid------//	
-				if(principal==null)
-					return "redirect:/login";
-				else
-					if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
-						return "redirect:/login";
+		if(principal==null)
+			return "redirect:/login";
+		else
+			if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+				return "redirect:/login";
+		
 		//---------session check over----------//
+		
 				if(	jobService.getAadharByJobId(Integer.parseInt(id)).equals(principal.getName()))
 				{
 					m.addAttribute("valid", false);
@@ -65,7 +67,7 @@ public class AppliedJobController {
 				else
 					m.addAttribute("valid", true);
 				
-				
+				m.addAttribute("owner", userService.getNameById(userService.getUserByAadharNo(jobService.getAadharByJobId(Integer.parseInt(id))).getUserId()));		
 		m.addAttribute("desc", desc);
 		m.addAttribute("state", state);
 		m.addAttribute("city", city);
@@ -81,16 +83,16 @@ public class AppliedJobController {
 
 //will receive request to apply For a job and redirect to "All Applied Jobs" Page	
 	@GetMapping("/jobApplied/{job_id}")
-	public String applyJob(@PathVariable String job_id,HttpSession session,Model model,Principal principal)
+	public String applyJob(@PathVariable String job_id,Model model,Principal principal)
 	{
 		
-	//-----checking if session valid------//	
+		//-----checking if session valid------//	
 		if(principal==null)
 			return "redirect:/login";
 		else
-			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+			if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
 				return "redirect:/login";
-		
+
 		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
 	//---------session check over----------//		
 		
@@ -104,7 +106,7 @@ public class AppliedJobController {
 	
 //will show list of all jobs which logged user has applied for
 	@GetMapping("/all_applied_jobs")
-	public String viewMyAppliedJob(Model model,HttpSession session,Principal principal)
+	public String viewMyAppliedJob(Model model,Principal principal)
 	{		
 		System.out.println(principal);
 		
@@ -112,11 +114,11 @@ public class AppliedJobController {
 				if(principal==null)
 					return "redirect:/login";
 				else
-					if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+					if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
 						return "redirect:/login";
-				
+
 				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-		//---------session check over----------//
+			//---------session check over----------//	
 		
 		
 		List<AppliedJobDetails> jobDetails=new ArrayList<AppliedJobDetails>();

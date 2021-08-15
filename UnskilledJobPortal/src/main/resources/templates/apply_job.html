@@ -203,6 +203,53 @@
                                             </div>
                                         </div>
 
+										<div class="table-responsive m-b-40" style="text-align: left">
+                                    			<table class="table table-borderless table-data3">
+                                    				<tr>
+                                    					<th>Description</th><td th:text="${desc}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work State</th><td th:text="${state}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work City</th><td th:text="${city}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Owner Name</th><td th:text="${owner}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Work Area</th><td ><span th:text="${area}"></span> , <span th:text="${pin}"></span></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Salary</th><td>Rs: <span th:text="${cost}"></span></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Dutration</th><td th:text="${type}"></td>
+                                    				</tr>
+                                    				<tr>
+                                    					<th>Last date to apply:</th><td th:text="${date}"></td>
+                                    				</tr>
+                                    			 </table>
+                                    			 
+                                    			 <div th:if="${valid}">
+	                                   				 <div class="card-text text-sm-center">
+		                                            <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
+				                                            <i class="fa fa-dot-circle-o"></i> Apply
+				                                        </button></a>  
+			                                   		</div>
+			                                   </div>
+			                                   <!-- 
+			                                   	 <div class="card-text text-sm-center">
+		                                            <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
+				                                            <i class="fa fa-dot-circle-o"></i> Apply
+				                                        </button></a>  
+			                                   		</div>
+
+			                                    -->
+			                                   
+                                		</div>
+                                        <!-- 
+                                        
                                         <div class="card-body">
                                         <div class="mx-auto d-block" >
                                             
@@ -221,7 +268,7 @@
                                             <i class="fa fa-dot-circle-o"></i> Apply
                                         </button></a>                                           
                                         
-                                    </div>-->
+                                    </div>
                                     <div th:if="${valid}">
 	                                   				 <div class="card-text text-sm-center">
 		                                            <a th:href="@{/jobApplied/{id}(id=${id})}" ><button type="submit" class="btn btn-primary btn-sm">
@@ -253,7 +300,6 @@
                                     </div>
 											 -->
 											
-
                                             
                                     </section>
                                 </aside>

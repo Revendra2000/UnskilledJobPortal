@@ -42,7 +42,7 @@ public class TestControllerForFrontEnd {
 			if(principal==null)
 				return "redirect:/login";
 			else
-				if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
 					return "redirect:/login";
 			
 			//---------session check over----------//
@@ -51,23 +51,46 @@ public class TestControllerForFrontEnd {
 			return "profile";
 		}
 		
+		
 		//Updated User Profile
 		@GetMapping("/update_profile/{userId}")
-		public String Update_profile(@PathVariable(value = "userId") int userId,Model model) {
+		public String Update_profile(@PathVariable(value = "userId") int userId,Model model,Principal principal) {
 			
-			//model.addAttribute("user", userService.getUserByAadharNo(principal.getName()));
-			String user=userService.getUserAadharUsingUserId(userId);
-			model.addAttribute("user", user);
+			//-----checking if session valid------//	
+			if(principal==null)
+				return "redirect:/login";
+			else
+				if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+					return "redirect:/login";
+			
+			//---------session check over----------//
+		
+			String aadhar=userService.getUserAadharUsingUserId(userId);
+			model.addAttribute("user", userService.getUserByAadharNo(aadhar));
+			//model.addAttribute("user", user);
 			return "profile_update";
 		}
 		
 		@RequestMapping(value="/updates_profiles" ,method = RequestMethod.POST)
-		public String updateproess(@ModelAttribute("user") Users user,Model model) {
+		public String updateproess(@ModelAttribute("user") Users user,Model model,Principal principal) {
 
+			//-----checking if session valid------//	
+			if(principal==null)
+				return "redirect:/login";
+			else
+				if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+					return "redirect:/login";
 			
+			//---------session check over----------//
+			
+			Users u=userService.getUserByAadharNo(principal.getName());
+			user.setAadhar(u.getAadhar());
+			user.setPassword(u.getPassword());
+			user.setUserId(u.getUserId());
+			user.setGender(u.getGender());
+			user.setRoles(u.getRoles());
 			userService.registerUser(user);
-			//System.out.println("Table" +user);
-			//model.addAttribute("user", new Users());
+			System.out.println("Updated User" +user);
 			return "redirect:/profile";
 		}
 }

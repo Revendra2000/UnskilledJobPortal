@@ -52,11 +52,11 @@ public class JobController {
 			if(principal==null)
 				return "redirect:/login";
 			else
-				if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+				if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
 					return "redirect:/login";
-			
+
 			int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-			//---------session check over----------//
+		//---------session check over----------//	
 			
 			
 		//<------------- CategoryName for Refernece ------------------------>
@@ -122,14 +122,14 @@ public class JobController {
 		
 		
 		//-----checking if session valid------//	
-		if(principal==null)
-			return "redirect:/login";
-		else
-			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
-				return "redirect:/login";
-		
-		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-		//---------session check over----------//
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+						return "redirect:/login";
+
+				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+			//---------session check over----------//	
 		
 
 		
@@ -174,16 +174,15 @@ public class JobController {
 		
 		//This method will display the details of all job posted by the loggedn in user
 		
-		
 		//-----checking if session valid------//	
-		if(principal==null)
-			return "redirect:/login";
-		else
-			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
-				return "redirect:/login";
-		
-		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-		//---------session check over----------//
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+						return "redirect:/login";
+
+				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+			//---------session check over----------//	
 		
 		String aadharNo =userService.getUserAadharUsingUserId(userId); //uncomment this code after uncommenting session code
 		
@@ -214,14 +213,14 @@ public class JobController {
 		
 		
 		//-----checking if session valid------//	
-		if(principal==null)
-			return "redirect:/login";
-		else
-			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
-				return "redirect:/login";
-		
-		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-		//---------session check over----------//
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+						return "redirect:/login";
+
+				int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
+			//---------session check over----------//	
 		
 		
 		List<AppliedUserDetails> userDetails=jobService.getDetailsOfAllAppliers(jobId);
@@ -249,7 +248,6 @@ public class JobController {
 		return "job_applied_list";
 	}
 	
-	// request url for select_candidate ==> select_candidate?jobId=1&aadharNo=111122223333
 	
 	@GetMapping("/select_candidate")
 	public String select_candidate(@RequestParam int jobId,@RequestParam String aadharNo,Model m,Principal principal) {
@@ -259,17 +257,15 @@ public class JobController {
 		//This method will be invoked when the job poster click on select candidate form all appliers list
 		
 		
-		//-----checking if session valid------//
-		
+		//-----checking if session valid------//	
 		if(principal==null)
 			return "redirect:/login";
 		else
-			if(userService.getUserByAadharNo(principal.getName()).getRoles()=="admin")
+			if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
 				return "redirect:/login";
-		
+
 		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
-		
-		//---------session check over----------//	
+	//---------session check over----------//	
 			
 		int result=jobService.assignJobToAadharNo(jobId, aadharNo);
 		

@@ -23,6 +23,8 @@ public class Massage {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Massage [content=" + content + ", type=" + type + "]";

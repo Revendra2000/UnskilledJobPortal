@@ -36,11 +36,7 @@ public class LoginController {
 	
 	@Autowired
 	private JobService jobService;
-	
-	
-	
-	
-	
+
 	
 //main Home-page , accessible even if not logged in	
 	@RequestMapping(value={"/all_job_list","/"},method=RequestMethod.GET)
@@ -92,37 +88,19 @@ public class LoginController {
 		}
 	}
 	
-//	
-//	
-//	@GetMapping("/login/{aadhar}")
-//	public String login(HttpServletRequest request,@PathVariable String aadhar,Model m)
-//	{		
-//		
-//		session=request.getSession();
-//		
-//			//---------------------adding userId and userType in session-------------------------------//
-//		
-//		session.setAttribute("userId", userService.getUserByAadharNo(aadhar).getUserId());
-//		if(userService.getUserByAadharNo(aadhar).getRoles()=="Role_User")
-//			session.setAttribute("userType","normal");
-//		else
-//			session.setAttribute("userType", "admin");
-//		
-//		m.addAttribute("allJobs",jobService.getAllJobs());
-//		return "redirect:/dashboard";
-//	}
-
 
 	
 	@GetMapping("/user/dashboard")
 	public String dashboard(Model m,Principal principal) {
 		
-		
-		//System.out.println("session in dashboad...."+session);
-		
-		
-		if(principal==null)
-			return "redirect:/login";
+		//-----checking if session valid------//	
+				if(principal==null)
+					return "redirect:/login";
+				else
+					if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+						return "redirect:/login";
+		//---------session check over----------//
+
 		
 		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
 		
@@ -136,8 +114,13 @@ public class LoginController {
 	public String dashboardNext(Model m,Principal principal) {
 		
 		
-		if(principal==null)
-			return "redirect:/login";
+		//-----checking if session valid------//	
+			if(principal==null)
+				return "redirect:/login";
+			else
+				if(userService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_ADMIN"))
+					return "redirect:/login";
+		//---------session check over----------//
 		
 		int userId=userService.getUserByAadharNo(principal.getName()).getUserId();
 		
@@ -146,36 +129,6 @@ public class LoginController {
 		m.addAttribute("name",userService.getNameById(userId));
 		return "dashboard";
 	}
-	
-	
-//	@GetMapping("/logout")
-//	public String logout()
-//	{
-//		session.removeAttribute("userId");
-//		session=null;
-//		return "login";
-//	}
 
-	
-//	@GetMapping("/apply_job")
-//	public String applyJob()
-//	{
-//		System.out.println("session in applyJob...."+session);
-//		
-//		
-//		if(session==null)
-//			return "redirect:/login";
-//		
-//		return "apply_job";
-//	}
-	
-	
-//	@GetMapping("/posted_job_list")
-//	public String posted_job_list() {
-//		if(session==null)
-//			return "redirect:/login";
-//		
-//		return "posted_job_list";
-//	}
 	
 }

@@ -73,11 +73,13 @@ public class AppliedJobDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	@Override
 	public String toString() {
 		return "AppliedJobDetails [jobId=" + jobId + ", aadhar=" + aadhar + ", category=" + category + ", owner="
-				+ owner + ", dateOfPost=" + dateOfPost + ", status=" + status + "]";
+				+ owner + ", dateOfPost=" + dateOfPost + ", location=" + location + ", status=" + status + "]";
 	}
+	
 	
 	
 	

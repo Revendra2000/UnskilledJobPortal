@@ -81,6 +81,23 @@ public class AllPostedJobDetails {
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
+	
+	public AllPostedJobDetails() {
+		super();
+	}
+
+	public AllPostedJobDetails(String jobId, String categoryName, String workArea, String workDescription,
+			String status, String dateOfPost, String lastDate, String jobType) {
+		super();
+		this.jobId = jobId;
+		this.categoryName = categoryName;
+		this.workArea = workArea;
+		this.workDescription = workDescription;
+		this.status = status;
+		this.dateOfPost = dateOfPost;
+		this.lastDate = lastDate;
+		this.jobType = jobType;
+	}
 
 	@Override
 	public String toString() {

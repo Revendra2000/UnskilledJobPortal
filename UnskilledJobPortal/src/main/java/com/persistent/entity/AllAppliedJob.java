@@ -16,6 +16,7 @@ class jobId implements Serializable
 		super();
 	}
 	
+	
 	public jobId(int jobId, String aadharWorker) {
 		super();
 		this.jobId = jobId;

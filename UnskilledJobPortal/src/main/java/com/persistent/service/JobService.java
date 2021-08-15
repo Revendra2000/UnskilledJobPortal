@@ -76,7 +76,6 @@ public class JobService {
 		jobDetails.setActive(true);
 		jobDetails.setDateOfPost(sqlTodayDate);
 		jobDetails.setEstimatedCost(postJobForm.getEstimatedCost());
-		//jobDetails.setJobAssignedTo(); will be populated by other functionality[Apply Job]
 
 		System.out.println(jobDetails);
 		return jobDetails;
@@ -85,7 +84,6 @@ public class JobService {
 	
 	public void addJobDetails(JobDetails job)
 	{
-		//dao.save(job);
 		dao.insertJobDetails(job.getAadharNo(),job.getCategoryId(),job.getDateOfPost(),job.getEstimatedCost(),job.getJobType(),job.getLastDate(),job.getWorkArea(),job.getWorkCity(),job.getWorkDescription(),job.getWorkPincode(),job.getWorkPincode());
 	}
 	
