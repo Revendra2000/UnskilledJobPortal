@@ -3,8 +3,6 @@ package com.persistent.controller;
 import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.persistent.entity.AllPostedJobDetails;
 import com.persistent.entity.AppliedUserDetails;
+import com.persistent.entity.Category;
 import com.persistent.entity.JobDetails;
 import com.persistent.entity.PostJobForm;
 import com.persistent.service.CategoryService;
@@ -83,15 +82,31 @@ public class JobController {
 //		
 
 				
-		//categoryService.addCategory(new Category("Maid"));
+//		categoryService.addCategory(new Category("Maid"));
 //		categoryService.addCategory(new Category("Painter"));
 //		categoryService.addCategory(new Category("Cook"));
 //		categoryService.addCategory(new Category("Carpenter"));
 //		categoryService.addCategory(new Category("Electrician"));
-		
-		//categoryService.addCategory(new Category("Washerman"));
-		
-		
+//		
+//		categoryService.addCategory(new Category("Washerman"));
+//		categoryService.addCategory(new Category("Watchman"));
+//		categoryService.addCategory(new Category("Driver"));
+//			
+//			//
+//			
+//			Maid
+//			Cook
+//			Watchman
+//			Carpenter
+//			Driver
+//			Painter
+//			Mason
+//			Washerman
+//			Sweeper
+//			Plumber
+//			Electrician
+//			Care Taker
+//		
 		//<------------- -------------------------------- -------------------->
 	
 	
