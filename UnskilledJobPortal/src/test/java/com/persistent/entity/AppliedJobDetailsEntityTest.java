@@ -20,8 +20,6 @@ public class AppliedJobDetailsEntityTest {
 		
 		ajd.setLocation(location);
 		String result=ajd.getLocation() ;
-		
-		
 		assertEquals(location, result);
 		
 	}
