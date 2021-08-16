@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -97,6 +98,8 @@ public class TestFrontEndController {
 		when(userService.getUserAadharUsingUserId(1)).thenReturn("111122223333");
 		when(userService.getUserByAadharNo("111122223333")).thenReturn(new Users(1,"111122223333","Ritika","Jadhav","F","ritika","8871958133","Ayodhya Bypass , Bhopal","ROLE_USER"));
 
+		when(userService.getUserAadharUsingUserId(1)).thenReturn("111122223333");
+		
 		Users user=new Users();
 		
 		user.setUserId(1);
@@ -110,6 +113,7 @@ public class TestFrontEndController {
 		user.setRoles("ROLE_USER");
 		
 		MockHttpServletRequestBuilder request = get("/profile_update").flashAttr("user", user) ;
+		//this.mockMvc.perform(request).andDo(print()).andExpect(status().isOk()) ; 
 	}
 	
 	
@@ -132,7 +136,8 @@ public class TestFrontEndController {
 		user.setPassword(passwordEncoder.encode("ritika"));
 		user.setRoles("ROLE_USER");
 		
-//		MockHttpServletRequestBuilder request = post("/profile").flashAttr("user", user) ;
+		MockHttpServletRequestBuilder request = post("/profile").flashAttr("user", user) ;
+		//this.mockMvc.perform(request).andDo(print()).andExpect(status().isOk()) ; 
 //		this.mockMvc.perform(request).andExpect(status().is3xxRedirection()) ;
 	}
 	

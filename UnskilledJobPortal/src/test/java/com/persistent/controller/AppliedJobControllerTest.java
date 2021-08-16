@@ -85,6 +85,10 @@ public class AppliedJobControllerTest {
 		when(userService.getUserAadharUsingUserId(1)).thenReturn("111122223333");
 		when(userService.getUserByAadharNo("111122223333")).thenReturn(new Users(1,"111122223333","Ritika","Jadhav","F","ritika","8871958133","Ayodhya Bypass , Bhopal","ROLE_USER"));
 
+		
+
+//		MockHttpServletRequestBuilder request = post("/jobApplied").param("job_id", 1) ;
+//		this.mockMvc.perform(request).andExpect(status().isOk()) ; 
 //			mockMvc.perform(get("/jobApplied")).andExpect(status().isOk()).andExpect(view().name("/all_applied_jobs"));
 	}
 //	
