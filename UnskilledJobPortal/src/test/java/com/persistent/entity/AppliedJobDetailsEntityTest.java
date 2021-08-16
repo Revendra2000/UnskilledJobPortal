@@ -114,7 +114,8 @@ public class AppliedJobDetailsEntityTest {
 	@Test
 	public void AppliedJobDetailsToStringWithObjectTest() {
 		
-		Date dop=null; //rectify this
+		String str="2015-03-31";
+		Date dop=Date.valueOf(str);
 		AppliedJobDetails ajd= new AppliedJobDetails(101,"0000 1111 2222 3333","category","owner",dop,"some status","some location");
 		
 		String result= "AppliedJobDetails [jobId=" + 101 + ", aadhar=" +"0000 1111 2222 3333" + ", category=" + "category" + ", owner="+ "owner" +", dateOfPost="+"2015-03-31"+ ", status="+"some status" +", location="+"some location]";
