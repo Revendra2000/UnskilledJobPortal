@@ -51,7 +51,7 @@ public class MessageTest {
 		public void TestMassageToStringEmptyObject() {
 			Message msg=new Message();
 			
-			String result = "Massage [content=" + null + ", type=" + null + "]";
+			String result = "Message [content=" + null + ", type=" + null + "]";
 			
 			assertEquals(msg.toString(),result);
 			
@@ -74,7 +74,7 @@ public class MessageTest {
 //			assertEquals(category.toString(),new String(sb));
 			
 		//	Case 2: Use string and add with + sign manually
-			String res="Massage [content="
+			String res="Message [content="
 					+"message1"
 					+", type="
 					+"secret"
