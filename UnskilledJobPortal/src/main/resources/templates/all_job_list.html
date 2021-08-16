@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="/translated::layout(~{::section})"><head>
+<section>
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -252,6 +253,7 @@
 				            	</form>
             	
                   -->
+                           <div id="google_translate_element"></div>
                                 
                 </div>
             </div>
@@ -285,6 +287,6 @@
     <script src="js/main.js"></script>
 
 </body>
-
+</section>
 </html>
 <!-- end document-->

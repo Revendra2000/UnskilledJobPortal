@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="/translated::layout(~{::section})"><head>
+<section>
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -278,7 +279,11 @@
         <!-- END PAGE CONTAINER-->
 
     </div>
-
+    <div id="google_translate_element"></div>
+    
+</div>
+</div>
+</div>
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -304,6 +309,6 @@
     <script src="js/main.js"></script>
 
 </body>
-
+</section>
 </html>
 <!-- end document-->

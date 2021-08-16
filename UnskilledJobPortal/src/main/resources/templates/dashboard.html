@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="/translated::layout(~{::section})"><head>
+<section>
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -76,8 +77,8 @@
                                 <i class="fa fa-user" aria-hidden="true"></i>Account</a>
                         </li>
                         <li class="has-sub">
-                            <a href="" th:href="@{home}">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
+                            <a href="" th:href="@{/logout}">
+                              <i class="fa fa-power-off" aria-hidden="true"></i>Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -114,9 +115,9 @@
                             <a href="" th:href="@{profile}">
                                 <i class="fa fa-user" aria-hidden="true"></i>Account</a>
                         </li>
-                        <li class="has-sub">
+                       <li class="has-sub">
                             <a href="" th:href="@{/logout}">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
+                              <i class="fa fa-power-off" aria-hidden="true"></i>Logout</a>
                         </li>
                         
                     </ul>
@@ -217,6 +218,7 @@
                                 </div>
                             </div>
                            </div>
+                           <div id="google_translate_element"></div>
                 </div>
             </div>
         </div>
@@ -253,6 +255,6 @@
 
 
 </body>
-
+</section>
 </html>
 <!-- end document-->
