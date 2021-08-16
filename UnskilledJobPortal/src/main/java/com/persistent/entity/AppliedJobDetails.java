@@ -2,10 +2,10 @@ package com.persistent.entity;
 
 import java.sql.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 
-import com.persistent.service.AllAppliedJobService;
-import com.persistent.service.JobService;
+//import com.persistent.service.AllAppliedJobService;
+//import com.persistent.service.JobService;
 
 public class AppliedJobDetails {
 
@@ -73,13 +73,11 @@ public class AppliedJobDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
 	@Override
 	public String toString() {
 		return "AppliedJobDetails [jobId=" + jobId + ", aadhar=" + aadhar + ", category=" + category + ", owner="
-				+ owner + ", dateOfPost=" + dateOfPost + ", location=" + location + ", status=" + status + "]";
+				+ owner + ", dateOfPost=" + dateOfPost + ", status=" + status + ", location=" + location + "]";
 	}
-	
 	
 	
 	
