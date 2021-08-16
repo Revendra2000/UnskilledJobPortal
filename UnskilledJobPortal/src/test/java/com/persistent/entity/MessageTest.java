@@ -12,7 +12,7 @@ public class MessageTest {
 		//category.getContent()
 		@Test
 		public void MassageContentTest() {
-			Massage msg=new Massage();
+			Message msg=new Message();
 			String msgName="message1";
 			
 			msg.setContent("message1");
@@ -27,7 +27,7 @@ public class MessageTest {
 		//Message.getType()
 		@Test
 		public void MassageTypeTest() {
-			Massage msg=new Massage();
+			Message msg=new Message();
 			String msgType="secret";
 			
 			msg.setType(msgType);
@@ -40,7 +40,7 @@ public class MessageTest {
 		//Test constructor Massage(String content,String type)
 		@Test
 		public void TestMassageConstructorParametrisedWithParametersContentAndType() {
-			Massage msg=new Massage("message1","secret");
+			Message msg=new Message("message1","secret");
 			assertEquals("message1", msg.getContent());
 			assertEquals("secret", msg.getType());
 		
@@ -49,7 +49,7 @@ public class MessageTest {
 		//Test the toString method for empty object
 		@Test
 		public void TestMassageToStringEmptyObject() {
-			Massage msg=new Massage();
+			Message msg=new Message();
 			
 			String result = "Massage [content=" + null + ", type=" + null + "]";
 			
@@ -60,7 +60,7 @@ public class MessageTest {
 		//Test the toString method for  object with data
 		@Test
 		public void TestMassageToStringWithObject() {
-			Massage msg=new Massage("message1","secret");
+			Message msg=new Message("message1","secret");
 			
 			
 //			Case : we can use StringBuilder for this
