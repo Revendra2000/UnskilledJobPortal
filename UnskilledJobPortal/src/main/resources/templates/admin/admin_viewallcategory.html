@@ -115,7 +115,7 @@ th:replace="admin/base::layout(~{::section})">
                                         <thead>
                                             <tr align="center">
                                                 <th>Category Name</th>
-                                                <th></th>
+                                                
                                        
                                             </tr>
                                         </thead>
@@ -125,7 +125,7 @@ th:replace="admin/base::layout(~{::section})">
                                                 <td th:text="${c.categoryName}"></td>
                                               
                                                 
-                                                <td>
+                                               <!--  <td>
                                                 <div style="margin-right: 25px;">
                                              <form th:action="@{/admin/admin_deletecategory}" th:object="${cat}" method="post">
                     							<input type="hidden" name="categoryId" th:value="${c.getCategoryId()}">
@@ -134,7 +134,7 @@ th:replace="admin/base::layout(~{::section})">
                     						
                								</form>
                								</div>
-               								</td>
+               								</td>-->
                                                 
                                                 
                                                  

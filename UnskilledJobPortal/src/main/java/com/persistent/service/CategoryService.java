@@ -92,9 +92,12 @@ public class CategoryService {
 	{
 		return dao.findByCategoryId(id).getCategoryName();
 	}
+
 	
-	public void deleteCategory(int categoryId) {
-		dao.deleteById(categoryId);
-	}
+// left for future scope .......
+	
+//	public void deleteCategory(int categoryId) {
+//		dao.deleteById(categoryId);
+//	}
 	
 }

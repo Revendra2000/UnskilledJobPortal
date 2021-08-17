@@ -11,9 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.persistent.entity.Users;
 
-
-
-
 public class CustomUserDetails implements UserDetails {
 	
 	//private static final int of = ;

@@ -163,16 +163,19 @@ public class CategoryServiceTest {
 		 
 	}
 	
-	@Test
-	public void deleteCategoryById_thenDeletingShouldBeSuccessful() {
-		 
-		Category cat=new Category(1,"Maid");
-		
-		 // Given that an item with CHECKED_ITEM_ID is removed
-		 categoryService.deleteCategory(cat.getCategoryId());
-		
-		 // Verify that the repository is used to delete the item
-		 verify(dao).deleteById(cat.getCategoryId());
-		
-	} 
+	
+// left for future scope .....
+	
+//	@Test
+//	public void deleteCategoryById_thenDeletingShouldBeSuccessful() {
+//		 
+//		Category cat=new Category(1,"Maid");
+//		
+//		 // Given that an item with CHECKED_ITEM_ID is removed
+//		 categoryService.deleteCategory(cat.getCategoryId());
+//		
+//		 // Verify that the repository is used to delete the item
+//		 verify(dao).deleteById(cat.getCategoryId());
+//		
+//	} 
 }
