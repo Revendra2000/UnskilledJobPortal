@@ -2,6 +2,7 @@ package com.persistent.service;
 
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -34,13 +35,15 @@ public class CategoryServiceTest {
 
 	//private CategoryService categoryService=new CategoryService();
 	
-	 ;
+	 
 	     
 	  @MockBean
 	  ICategoryDAO dao;
 
 	  @InjectMocks
 	  CategoryService categoryService;
+	  
+	 
 	 
 	  
 	@Test
@@ -67,6 +70,8 @@ public class CategoryServiceTest {
 	}
 	
 	
+	
+
 	@Test
 	public void testGetAllCategories() {
 		List<Category> categoriesList=new ArrayList<>();
@@ -79,6 +84,8 @@ public class CategoryServiceTest {
 		 
 		assertEquals(categoryService.getAllCategories(), categoriesList);
 	}
+	
+	
 	
 	
 	@Test
@@ -156,5 +163,16 @@ public class CategoryServiceTest {
 		 
 	}
 	
-
+	@Test
+	public void deleteCategoryById_thenDeletingShouldBeSuccessful() {
+		 
+		Category cat=new Category(1,"Maid");
+		
+		 // Given that an item with CHECKED_ITEM_ID is removed
+		 categoryService.deleteCategory(cat.getCategoryId());
+		
+		 // Verify that the repository is used to delete the item
+		 verify(dao).deleteById(cat.getCategoryId());
+		
+	} 
 }

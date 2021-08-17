@@ -100,6 +100,25 @@ public class AdminController {
 		return "admin/admin_viewallcategory";
 	}
 	
+	
+	@RequestMapping(value ="/admin_deletecategory",method = RequestMethod.POST)
+	public String deleteCategory(@ModelAttribute(value="cat") Category catNew, Model model,Principal principal ) {
+		
+		//-----checking if session valid------//	
+		if(principal==null)
+			return "redirect:/login";
+		else
+			if(usersService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_USER"))
+				return "redirect:/login";
+		//---------session check over----------//
+		
+		adminUserService.deleteCategory(catNew.getCategoryId());   
+	    
+	    
+	    model.addAttribute("category", adminUserService.getAllCategories());
+	    System.out.println(model.getAttribute("category"));
+		return "redirect:/admin/admin_viewallcategory";  
+	}
 //	left for future scope......
 	
 //	@RequestMapping(value = "/delete/{category_id}",method = RequestMethod.GET)
@@ -128,6 +147,25 @@ public class AdminController {
 		return "admin/admin_viewallusers";
 	}
 	
+	
+	@RequestMapping(value ="/admin_deleteuser",method = RequestMethod.POST)
+	public String deleteUser(@ModelAttribute(value="user") Users userNew, Model model,Principal principal ) {
+		
+		//-----checking if session valid------//	
+		if(principal==null)
+			return "redirect:/login";
+		else
+			if(usersService.getUserByAadharNo(principal.getName()).getRoles().equals("ROLE_USER"))
+				return "redirect:/login";
+		//---------session check over----------//
+		
+		userRepository.deleteById(userNew.getAadhar());  
+	    
+		List<Users> user = (List<Users>) this.userRepository.findAll();
+		model.addAttribute("user", user);
+	    System.out.println(model.getAttribute("category"));
+		return "redirect:/admin/admin_viewallusers";  
+	}
 	
 //	left for future scope.....
 //	@RequestMapping(value = "/userdelete/{user_id}",method = RequestMethod.GET)

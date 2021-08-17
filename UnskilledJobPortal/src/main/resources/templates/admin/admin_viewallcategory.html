@@ -115,6 +115,7 @@ th:replace="admin/base::layout(~{::section})">
                                         <thead>
                                             <tr align="center">
                                                 <th>Category Name</th>
+                                                <th></th>
                                        
                                             </tr>
                                         </thead>
@@ -123,12 +124,19 @@ th:replace="admin/base::layout(~{::section})">
                                               
                                                 <td th:text="${c.categoryName}"></td>
                                               
-                                                <!-- 
-                                                <td><div style="margin-right: 25px;">
-                                                    <div><a href="#" th:onclick="|deleteCategory(${c.categoryId})|" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
+                                                
+                                                <td>
+                                                <div style="margin-right: 25px;">
+                                             <form th:action="@{/admin/admin_deletecategory}" th:object="${cat}" method="post">
+                    							<input type="hidden" name="categoryId" th:value="${c.getCategoryId()}">
+                    							<input type="hidden" name="categoryName" th:value="${c.getCategoryName()}">
+                    							<button type="submit" style="color: red;"><i class="fa fa-trash" aria-hidden="true" ></i></button>
+                    						
+               								</form>
+               								</div>
+               								</td>
                                                 
                                                 
-                                                 -->
                                                  
                                            </tr>
                                             

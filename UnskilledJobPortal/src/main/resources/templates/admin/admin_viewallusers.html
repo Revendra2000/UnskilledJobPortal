@@ -118,6 +118,7 @@ th:replace="admin/base::layout(~{::section})">
                                                 <th>Address</th>
                                                 <th>Mobile No.</th>
                                                 <th>Gender</th>
+                                                <th></th>
                                                 
 
                                                 
@@ -130,9 +131,18 @@ th:replace="admin/base::layout(~{::section})">
                                                 <td> <span th:text="${c.address}"></span></td>
                                                 <td><span th:text="${c.contact}"></span></td>
                                                 <td><span th:text="${c.gender}"></span></td>
-                                                <!-- <td><div style="margin-right: 25px;">
-                                                     <div><a href="#" th:onclick="|deleteUser(${c.userId})|" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
-                                                -->
+                                                
+                                                <td>
+                                                <div style="margin-right: 25px;">
+                                             
+                                             <form th:action="@{/admin/admin_deleteuser}" th:object="${user}" method="post">
+                    							<input type="hidden" name="aadhar" th:value="${c.getAadhar()}">
+                    							<button type="submit" style="color: red;"><i class="fa fa-trash" aria-hidden="true" ></i></button>
+                    						
+               								</form>
+               								</div>
+                                                </td>
+                                                
                                             </tr>
                                             
                                         </tbody>
