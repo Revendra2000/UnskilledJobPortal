@@ -146,8 +146,8 @@ margin-bottom: 100px;
 							      </div>
 						</div>
 						<div class="form-group">
-							
-								<input type="text" name="gender" th:field="*{gender}" th:classappend="${#fields.hasErrors('gender') ? 'is-invalid':''}" class="form-control  my-3 p-3" placeholder="Gender" required th:value="${user.gender}">
+					      <label><input type="radio"  name="gender" th:field="*{gender}" th:classappend="${#fields.hasErrors('gender') ? 'is-invalid':''}" placeholder="Gender" value="M">Male</label>
+					       <label><input type="radio"  name="gender" th:field="*{gender}" th:classappend="${#fields.hasErrors('gender') ? 'is-invalid':''}" placeholder="Gender" value="F">Female</label>
 								<div class="invalid-feedback" th:each="e:${#fields.errors('gender')}" th:text="${e}">
 							      </div>
 						</div>
