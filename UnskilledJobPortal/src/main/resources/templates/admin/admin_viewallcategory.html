@@ -113,16 +113,27 @@ th:replace="admin/base::layout(~{::section})">
                                 <div class="table-responsive m-b-40" >
                                     <table class="table table-borderless table-data3" >
                                         <thead>
-                                            <tr align="center">
+                                            
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
                                                 <th>Category Name</th>
-                                                
-                                       
+
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
+                                        </thead>
                                         <tbody>
-                                            <tr th:each="c:${category}" style="text-align: center">
-                                              
+                                            <tr th:each="c:${category}" >
+                                              	<td></td>
+                                               	 <td></td>
+                                              	 <td></td>
+                                              	 <td></td>
                                                 <td th:text="${c.categoryName}"></td>
+
                                               
                                                 
                                                <!--  <td>
@@ -135,6 +146,13 @@ th:replace="admin/base::layout(~{::section})">
                								</form>
                								</div>
                								</td>-->
+
+                                              	<td> </td>
+                                                <td></td>
+                                                <!-- 
+                                                <td><div style="margin-right: 25px;">
+                                                    <div><a href="#" th:onclick="|deleteCategory(${c.categoryId})|" style="color: red;"><i class="fa fa-trash" aria-hidden="true"></i></a></div></div></td>
+>>>>>>> refs/remotes/origin/final-project-version2.0-merge-in-main
                                                 
                                                 
                                                  
